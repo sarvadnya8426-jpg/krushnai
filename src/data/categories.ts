@@ -1,0 +1,253 @@
+import plywood from "@/assets/cat-plywood.jpg";
+import laminates from "@/assets/cat-laminates.jpg";
+import hardware from "@/assets/cat-hardware.jpg";
+import kitchen from "@/assets/cat-kitchen.jpg";
+import wardrobe from "@/assets/cat-wardrobe.jpg";
+import door from "@/assets/cat-door.jpg";
+import bathroom from "@/assets/cat-bathroom.jpg";
+import mirror from "@/assets/cat-mirror.jpg";
+import tools from "@/assets/cat-tools.jpg";
+import toolAccessories from "@/assets/cat-accessories.jpg";
+import adhesives from "@/assets/cat-adhesives.jpg";
+import general from "@/assets/cat-general.jpg";
+
+export type Category = {
+  slug: string;
+  name: string;
+  description: string;
+  image: string;
+  items: string[];
+};
+
+export const categories: Category[] = [
+  {
+    slug: "plywood-boards",
+    name: "Plywood & Boards",
+    description: "Commercial, waterproof and marine grades plus MDF, HDHMR and block boards.",
+    image: plywood,
+    items: [
+      "Commercial Plywood",
+      "Waterproof Plywood",
+      "Marine Plywood",
+      "BWR/BWP Plywood",
+      "MDF Boards",
+      "HDHMR Boards",
+      "Particle Boards",
+      "Block Boards",
+      "Veneers",
+      "Decorative Boards",
+    ],
+  },
+  {
+    slug: "laminates",
+    name: "Laminates & Surface Materials",
+    description: "Decorative laminates, acrylic and PVC sheets, edge banding and wood finishes.",
+    image: laminates,
+    items: [
+      "Decorative Laminates",
+      "Acrylic Sheets",
+      "PVC Sheets",
+      "Membrane Sheets",
+      "Edge Banding",
+      "Decorative Panels",
+      "Wood Finishes",
+    ],
+  },
+  {
+    slug: "furniture-hardware",
+    name: "Furniture Hardware & Fittings",
+    description: "Hinges, channels, handles, locks and connectors for every furniture build.",
+    image: hardware,
+    items: [
+      "Cabinet Hinges",
+      "Soft-Close Hinges",
+      "Drawer Channels",
+      "Telescopic Channels",
+      "Handles",
+      "Knobs",
+      "Magnetic Catches",
+      "Screws",
+      "Fasteners",
+      "Shelf Supports",
+      "Furniture Locks",
+      "Connector Fittings",
+      "Corner Brackets",
+      "Gas Lift Supports",
+      "Cabinet Accessories",
+    ],
+  },
+  {
+    slug: "modular-kitchen",
+    name: "Modular Kitchen Accessories",
+    description: "Baskets, pull-outs, tandem drawers and organisers for modern kitchens.",
+    image: kitchen,
+    items: [
+      "Kitchen Baskets",
+      "Cutlery Baskets",
+      "Bottle Pull-Outs",
+      "Corner Units",
+      "Magic Corner",
+      "Tandem Drawers",
+      "Pantry Units",
+      "Under-Sink Accessories",
+      "Waste Bins",
+      "Kitchen Organizers",
+      "Lift-Up Systems",
+    ],
+  },
+  {
+    slug: "wardrobe-accessories",
+    name: "Wardrobe Accessories",
+    description: "Pull-outs, racks, rods and lighting that make wardrobes work harder.",
+    image: wardrobe,
+    items: [
+      "Wardrobe Handles",
+      "Hanging Rods",
+      "Wardrobe Baskets",
+      "Trouser Pull-Outs",
+      "Tie & Belt Racks",
+      "Shoe Racks",
+      "Pull-Down Hangers",
+      "Wardrobe Lights",
+      "Drawer Systems",
+    ],
+  },
+  {
+    slug: "door-hardware",
+    name: "Door Hardware & Door Kits",
+    description: "Complete lock kits, mortise locks, handles, hinges and smart locks.",
+    image: door,
+    items: [
+      "Complete Door Lock Kits",
+      "Mortise Locks",
+      "Cylindrical Locks",
+      "Door Handles",
+      "Door Knobs",
+      "Door Hinges",
+      "Door Stoppers",
+      "Tower Bolts",
+      "Aldrops",
+      "Door Closers",
+      "Door Chains",
+      "Door Viewers",
+      "Digital Door Locks",
+      "Smart Door Locks",
+      "Other Door Accessories",
+    ],
+  },
+  {
+    slug: "bathroom-accessories",
+    name: "Premium Bathroom Accessories",
+    description: "Towel rods, holders, shelves and coordinated accessory sets.",
+    image: bathroom,
+    items: [
+      "Soap Dish / Soap Holder",
+      "Soap Dispenser",
+      "Towel Rod",
+      "Towel Ring",
+      "Towel Rack",
+      "Towel Shelf",
+      "Toilet Paper Holder",
+      "Robe Hook",
+      "Bathroom Shelf",
+      "Corner Shelf",
+      "Toothbrush Holder",
+      "Glass Shelf",
+      "Bathroom Accessory Sets",
+      "Shower Accessories",
+      "Bathroom Fittings",
+    ],
+  },
+  {
+    slug: "led-mirrors",
+    name: "LED Mirrors",
+    description: "Backlit, touch sensor and anti-fog mirrors in multiple shapes and sizes.",
+    image: mirror,
+    items: [
+      "LED Bathroom Mirrors",
+      "Backlit Mirrors",
+      "Touch Sensor Mirrors",
+      "Anti-Fog Mirrors",
+      "Round LED Mirrors",
+      "Rectangle LED Mirrors",
+      "Designer Mirrors",
+      "Smart Bathroom Mirrors",
+    ],
+  },
+  {
+    slug: "power-tools",
+    name: "Power Tools",
+    description: "Drills, grinders, saws and more for professionals and workshops.",
+    image: tools,
+    items: [
+      "Hand Drills",
+      "Cordless Drills",
+      "Impact Drills",
+      "Angle Grinders",
+      "Cutting Machines",
+      "Circular Saws",
+      "Jigsaws",
+      "Rotary Hammers",
+      "Impact Drivers",
+      "Heat Guns",
+      "Sanders",
+      "Polishers",
+      "Electric Screwdrivers",
+      "Blowers",
+      "Power Tool Accessories",
+    ],
+  },
+  {
+    slug: "power-tool-accessories",
+    name: "Power Tool Accessories",
+    description: "Bits, discs, blades and attachments to keep every job moving.",
+    image: toolAccessories,
+    items: [
+      "Drill Bits",
+      "Cutting Discs",
+      "Grinding Wheels",
+      "Sanding Discs",
+      "Saw Blades",
+      "Tool Attachments",
+      "Tool Cases",
+    ],
+  },
+  {
+    slug: "adhesives-chemicals",
+    name: "Adhesives & Chemicals",
+    description: "Wood and construction adhesives, sealants, fillers and finishes.",
+    image: adhesives,
+    items: [
+      "Wood Adhesives",
+      "Construction Adhesives",
+      "Silicone Sealants",
+      "Contact Adhesives",
+      "Wood Fillers",
+      "Sealants",
+      "Wood Polish",
+      "Finishing Products",
+      "Cleaning Products",
+    ],
+  },
+  {
+    slug: "general-hardware",
+    name: "General Hardware",
+    description: "Screws, fasteners, brackets, hooks and everyday fittings in all sizes.",
+    image: general,
+    items: [
+      "Screws",
+      "Nails",
+      "Nuts & Bolts",
+      "Fasteners",
+      "Wall Plugs",
+      "Brackets",
+      "Hooks",
+      "Chains",
+      "Latches",
+      "Locks",
+      "General Fittings",
+    ],
+  },
+];
+
+export const categoryBySlug = (slug: string) => categories.find((c) => c.slug === slug);
