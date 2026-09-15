@@ -132,7 +132,7 @@ export const products: Product[] = [
     description: "Hydraulic auto-close hinge with smooth, silent shutter action.",
     specs: ["0° / 8° / 15° crank options", "Tested for long cycle life"],
     tags: ["popular", "featured"],
-    image: img("furniture-hardware"),
+    image: "/images/hardware/softclosehinge.png",
   },
   {
     id: "hw-telescopic",
@@ -142,8 +142,8 @@ export const products: Product[] = [
     type: "Fitting",
     application: "Home Furniture",
     description: "Full extension ball bearing slides for smooth drawer movement.",
-    specs: ["Lengths: 10\" – 22\""],
-    image: img("furniture-hardware"),
+    specs: ["Lengths: 9\" – 24\""],
+    image: "/images/hardware/telescopichannel.png",
   },
   {
     id: "hw-handles",
@@ -154,7 +154,7 @@ export const products: Product[] = [
     application: "Interior Projects",
     description: "Brass, matte black, rose gold and stainless finishes in many profiles.",
     tags: ["popular"],
-    image: img("furniture-hardware"),
+    image: "/images/hardware/handles.png",
   },
   {
     id: "hw-gaslift",
@@ -164,7 +164,7 @@ export const products: Product[] = [
     type: "Fitting",
     application: "Home Furniture",
     description: "Controlled lift support for storage beds and flap shutters.",
-    image: img("furniture-hardware"),
+    image: "/images/hardware/gaslift.png",
   },
   {
     id: "hw-locks",

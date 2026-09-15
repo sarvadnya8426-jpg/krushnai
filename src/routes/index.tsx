@@ -127,7 +127,7 @@ function Home() {
             />
             <div className="absolute -right-3 -bottom-6 hidden rounded-md bg-walnut-gradient px-6 py-5 text-primary-foreground shadow-lift sm:block">
               <p className="font-display text-2xl text-accent">One Roof</p>
-              <p className="text-xs tracking-[0.16em] uppercase">12 Product Categories</p>
+              <p className="text-xs tracking-[0.16em] uppercase">Complete Solutions</p>
             </div>
           </div>
           <div>
