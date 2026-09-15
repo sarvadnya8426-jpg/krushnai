@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { whatsappLink } from "@/config/site";
 import { categories } from "@/data/categories";
@@ -6,19 +8,23 @@ import { useQuote } from "./QuoteProvider";
 
 export function ProductCard({ product }: { product: Product }) {
   const { openQuote } = useQuote();
+  const [zoomOpen, setZoomOpen] = useState(false);
   const categoryName = categories.find((c) => c.slug === product.category)?.name ?? "";
 
   return (
     <article className="group flex flex-col overflow-hidden rounded-md border border-border bg-card shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
-      <div className="relative aspect-[4/3] overflow-hidden">
-        <img
-          src={product.image}
-          alt={product.name}
-          loading="lazy"
-          width={900}
-          height={700}
-          className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
-        />
+      <div
+  className="relative aspect-[4/3] overflow-hidden cursor-zoom-in"
+  onClick={() => setZoomOpen(true)}
+>
+  <img
+    src={product.image}
+    alt={product.name}
+    loading="lazy"
+    width={900}
+    height={700}
+    className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
+  />
         {product.tags?.includes("new") ? (
           <span className="absolute top-3 left-3 rounded-sm bg-accent px-2.5 py-1 text-[0.65rem] font-bold tracking-[0.14em] text-accent-foreground uppercase">
             New
@@ -52,6 +58,15 @@ export function ProductCard({ product }: { product: Product }) {
           </Button>
         </div>
       </div>
+      <Dialog open={zoomOpen} onOpenChange={setZoomOpen}>
+  <DialogContent className="max-w-3xl bg-transparent border-none shadow-none p-0">
+    <img
+      src={product.image}
+      alt={product.name}
+      className="w-full h-auto max-h-[85vh] object-contain rounded-md"
+    />
+  </DialogContent>
+</Dialog>
     </article>
   );
 }
