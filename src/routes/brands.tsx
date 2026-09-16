@@ -6,6 +6,8 @@ import dongLogo from "@/assets/brands/dong.png";
 import decostaLogo from "@/assets/brands/decosta.jpg";
 import boschLogo from "@/assets/brands/bosch.jpg";
 import astralLogo from "@/assets/brands/astral.jpg";
+import hafelleLogo from "@/assets/brands/haffele.png";
+import yuriLogo from "@/assets/brands/yuri.webp";
 const brands = [
   { name: "Pidilite", image: pidiliteLogo },
   { name: "Godrej", image: godrejLOGO },
@@ -15,6 +17,8 @@ const brands = [
   { name: "Decosta", image: decostaLogo },
   { name: "Bosch", image: boschLogo },
   { name: "Astral", image: astralLogo },
+  { name: "Haffele", image: hafelleLogo },
+  { name: "Yuri", image: yuriLogo },
 ];
 import { createFileRoute } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";

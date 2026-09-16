@@ -15,9 +15,9 @@ export const site = {
     return this.phones[0] as string;
   },
   whatsapp: "918767415075", // digits only, with country code
-  email: "info@krushnaitredars.com",
+  email: "sarvadnyadhole@gmail.com",
   address: {
-    line1: "Krushnai Tredars, Near BSNL Tower Khuldabad Rd, Phulambri,",
+    line1: "Krushnai Tredars, Near BSNL Tower Khuldabad Rd, Phulambri",
     line2: "Chhatrapati Sambhajinagar",
     state: "Maharashtra",
     pincode: "431111",
@@ -34,7 +34,7 @@ export const site = {
     youtube: "#",
   },
   stats: [
-    { value: "10+", label: "Years Experience" },
+    { value: "20+", label: "Years Experience" },
     { value: "1000+", label: "Happy Customers" },
     { value: "500+", label: "Products" },
     { value: "Quality", label: "Assured" },

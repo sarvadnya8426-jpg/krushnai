@@ -5,7 +5,9 @@ import europaLogo from "@/assets/brands/europa.jpg";
 import dongLogo from "@/assets/brands/dong.png";
 import decostaLogo from "@/assets/brands/decosta.jpg";
 import boschLogo from "@/assets/brands/bosch.jpg";
-import astralLogo from "@/assets/brands/astral.jpg";
+import astralLogo from "@/assets/brands/astral.jpg"
+import haffeleLogo from "@/assets/brands/haffele.png";
+import yuriLogo from "@/assets/brands/yuri.webp";
 const brands = [
   { name: "Pidilite", image: pidiliteLogo },
   { name: "Godrej", image: godrejLOGO },
@@ -15,6 +17,8 @@ const brands = [
   { name: "Decosta", image: decostaLogo },
   { name: "Bosch", image: boschLogo },
   { name: "Astral", image: astralLogo },
+  { name: "Haffele", image: haffeleLogo },
+  { name: "Yuri", image: yuriLogo },
 ];
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
@@ -241,10 +245,14 @@ function Home() {
           className="flex h-28 items-center justify-center rounded-lg border border-border bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
         >
           <img
-            src={brand.image}
-            alt={brand.name}
-            className="max-h-16 max-w-full object-contain"
-          />
+      src={brand.image}
+      alt={brand.name}
+      className={`h-16 w-auto object-contain ${
+  ["Decosta", "Bosch", "Dong", "Europa", "Astral"].includes(brand.name)
+    ? "h-24"
+    : ""
+}`}
+/>
         </div>
       ))}
     </div>
@@ -272,9 +280,7 @@ function Home() {
               </figure>
             ))}
           </div>
-          <p className="mt-6 text-center text-xs text-muted-foreground">
-            Sample reviews shown as placeholders until genuine customer feedback is added.
-          </p>
+          
         </div>
       </section>
 
@@ -302,6 +308,32 @@ function Home() {
           </div>
         </div>
       </section>
+      
+       {/* MAP */}
+      <section className="py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <SectionHeading
+            eyebrow="Visit Us"
+            title="Find Us on the Map"
+            subtitle="Visit our showroom and explore our complete range of products."
+          />
+
+          <div className="mt-10 overflow-hidden rounded-md border border-border shadow-soft">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3142.15553921432!2d75.413994!3d20.0853108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdbbf0051053899%3A0x6c192573a4a1b322!2sKrushnai%20Tredars!5e1!3m2!1sen!2sin!4v1789308134497!5m2!1sen!2sin"
+              width="100%"
+              height="450"
+              style={{ border: 0 }}
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Krushnai Tredars Location"
+            />
+          </div>
+        </div>
+      </section>
+
     </>
   );
+  
 }

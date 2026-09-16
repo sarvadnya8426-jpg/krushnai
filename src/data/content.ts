@@ -9,11 +9,7 @@ export const solutions = [
     description: "Plywood, hardware and kitchen accessories.",
     image: img("modular-kitchen"),
   },
-  {
-    title: "Premium Wardrobes",
-    description: "Boards, fittings, handles and wardrobe accessories.",
-    image: img("wardrobe-accessories"),
-  },
+  
   {
     title: "Home Furniture",
     description: "Plywood, laminates, fittings and hardware.",
@@ -82,18 +78,18 @@ export const testimonials = [
   {
     quote:
       "Excellent product quality and helpful staff. They guided us in selecting the right plywood and hardware for our kitchen.",
-    name: "Customer Name",
+    name: "Aditya",
     role: "Homeowner",
   },
   {
     quote:
       "Good collection of furniture hardware and bathroom accessories. Pricing was reasonable and service was quick.",
-    name: "Customer Name",
+    name: "Gajanan",
     role: "Interior Contractor",
   },
   {
     quote: "A convenient one-stop shop for plywood, hardware and interior materials.",
-    name: "Customer Name",
+    name: "Sahil",
     role: "Carpenter",
   },
 ];
