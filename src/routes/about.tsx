@@ -13,7 +13,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Krushnai Tredars serves homeowners, carpenters, interior designers, contractors and builders with plywood, hardware, bathroom accessories, door fittings and power tools under one roof.",
+          "Krushnai Traders serves homeowners, carpenters, interior designers, contractors and builders with plywood, hardware, bathroom accessories, door fittings and power tools under one roof.",
       },
       { property: "og:title", content: `About ${site.name}` },
       {
@@ -45,7 +45,7 @@ function AboutPage() {
         <div className="grid items-start gap-12 lg:grid-cols-2">
           <img
             src={showroom}
-            alt="Krushnai Tredars showroom with plywood and board displays"
+            alt="Krushnai Traders showroom with plywood and board displays"
             loading="lazy"
             width={1200}
             height={800}

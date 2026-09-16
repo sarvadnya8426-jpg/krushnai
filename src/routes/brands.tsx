@@ -34,7 +34,7 @@ export const Route = createFileRoute("/brands")({
       {
         name: "description",
         content:
-          "Brands stocked at Krushnai Tredars for plywood, laminates, furniture hardware, bathroom accessories and power tools. Ask our team about a specific brand.",
+          "Brands stocked at Krushnai Traders for plywood, laminates, furniture hardware, bathroom accessories and power tools. Ask our team about a specific brand.",
       },
       { property: "og:title", content: `Brands You Can Trust — ${site.name}` },
       { property: "og:description", content: "Ask our team which brands are currently in stock." },

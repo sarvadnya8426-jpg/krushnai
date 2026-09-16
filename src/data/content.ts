@@ -9,7 +9,11 @@ export const solutions = [
     description: "Plywood, hardware and kitchen accessories.",
     image: img("modular-kitchen"),
   },
-  
+  {
+    title: "Premium Wardrobes",
+    description: "Boards, fittings, handles and wardrobe accessories.",
+    image: img("wardrobe-accessories"),
+  },
   {
     title: "Home Furniture",
     description: "Plywood, laminates, fittings and hardware.",
@@ -57,7 +61,7 @@ export const brandList = [
 export type GalleryItem = { src: string; alt: string; filter: string };
 
 export const gallery: GalleryItem[] = [
-  { src: showroom, alt: "Krushnai Tredars showroom interior", filter: "Showroom" },
+  { src: showroom, alt: "Krushnai Traders showroom interior", filter: "Showroom" },
   { src: img("plywood-boards"), alt: "Plywood and board stock", filter: "Showroom" },
   { src: img("modular-kitchen"), alt: "Modular kitchen with pull-out accessories", filter: "Kitchens" },
   { src: img("wardrobe-accessories"), alt: "Wardrobe interior with fittings", filter: "Furniture" },
@@ -105,7 +109,7 @@ export const trustFeatures = [
     description: "Value-focused pricing for retail and bulk customers.",
   },
   { title: "Expert Assistance", description: "Help customers choose the right product." },
-  { title: "Reliable Service", description: "Professional customer support and enquiry handling." },
+  { title: "Complete Support", description: "From product enquiries to solutions, we’re here to assist you." },
 ];
 
 export const customerTypes = [

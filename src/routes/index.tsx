@@ -45,7 +45,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Krushnai Tredars is a one-stop showroom for plywood, laminates, furniture hardware, modular kitchen and wardrobe accessories, bathroom accessories, LED mirrors, door hardware and power tools.",
+          "Krushnai Traders is a one-stop showroom for plywood, laminates, furniture hardware, modular kitchen and wardrobe accessories, bathroom accessories, LED mirrors, door hardware and power tools.",
       },
       { property: "og:title", content: `${site.name} | Everything You Need to Build, Furnish & Finish` },
       {
@@ -123,7 +123,7 @@ function Home() {
           <div className="relative">
             <img
               src={showroom}
-              alt="Inside the Krushnai Tredars showroom"
+              alt="Inside the Krushnai Traders showroom"
               loading="lazy"
               width={1200}
               height={800}
@@ -320,14 +320,14 @@ function Home() {
 
           <div className="mt-10 overflow-hidden rounded-md border border-border shadow-soft">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3142.15553921432!2d75.413994!3d20.0853108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdbbf0051053899%3A0x6c192573a4a1b322!2sKrushnai%20Tredars!5e1!3m2!1sen!2sin!4v1789308134497!5m2!1sen!2sin"
+              src= "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3127.5180685025857!2d75.41141907427911!3d20.085315819514655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdbbf0051053899%3A0x6c192573a4a1b322!2sKrushnai%20Traders!5e1!3m2!1sen!2sin!4v1789549565739!5m2!1sen!2sin"
               width="100%"
               height="450"
               style={{ border: 0 }}
               loading="lazy"
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
-              title="Krushnai Tredars Location"
+              title="Krushnai Traders Location"
             />
           </div>
         </div>

@@ -12,7 +12,7 @@ export const Route = createFileRoute("/gallery")({
       {
         name: "description",
         content:
-          "Photo gallery of the Krushnai Tredars showroom, plywood stock, furniture hardware, modular kitchens, wardrobes, bathroom accessories, LED mirrors, door hardware and power tools.",
+          "Photo gallery of the Krushnai Traders showroom, plywood stock, furniture hardware, modular kitchens, wardrobes, bathroom accessories, LED mirrors, door hardware and power tools.",
       },
       { property: "og:title", content: `Gallery — ${site.name}` },
       { property: "og:description", content: "A look inside our showroom and product range." },

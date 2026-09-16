@@ -64,7 +64,7 @@ export const products: Product[] = [
     type: "Board",
     application: "Interior Projects",
     description: "Smooth, uniform board ideal for painted shutters, panelling and CNC work.",
-    specs: ["Thickness: 5.5 / 9 / 12 / 18 mm"],
+    specs: ["Thickness: 6 / 8 / 12 / 18 mm"],
     image: img("plywood-boards"),
   },
   {
@@ -122,6 +122,25 @@ export const products: Product[] = [
     specs: ["Widths: 22 / 28 / 35 mm"],
     image: img("laminates"),
   },
+  {
+  id: "pvc-laminate",
+  name: "PVC Laminate",
+  category: "laminates",
+  subcategory: "PVC Laminates",
+  type: "Laminate",
+  application: "Furniture & Interior",
+  description:
+    "Premium PVC laminate sheets for furniture", 
+  specs: [
+    "Water-resistant surface",
+    "Scratch-resistant finish",
+    "Easy to clean and maintain",
+    "Available in multiple colours and designs",
+    "Suitable for furniture and interior applications",
+  ],
+  tags: ["popular", "featured"],
+  image: "/images/Laminates/pvc-laminate.png",
+},
   {
     id: "hw-softclose-hinge",
     name: "Soft-Close Cabinet Hinge",
@@ -588,6 +607,175 @@ export const products: Product[] = [
     description: "PU, melamine and touch-up finishes for timber surfaces.",
     image: "/images/adhesivechemical/wudfin.jpg",
   },
+  {
+  id: "dr-fixit",
+  name: "Dr. Fixit",
+  category: "adhesives-chemicals",
+  subcategory: "Waterproofing Solutions",
+  type: "Waterproofing",
+  application: "Waterproofing & Construction",
+  description:
+    "Reliable waterproofing solution designed to protect surfaces from water seepage and moisture.",
+  specs: [
+    "Water-resistant protection",
+    "Suitable for construction applications",
+    "Helps prevent water seepage",
+    "Easy application",
+  ],
+  tags: ["popular"],
+  image: "/images/Adhesives/dr-fixit.png",
+},
+
+{
+  id: "white-cat-acid",
+  name: "White Cat Acid",
+  category: "adhesives-chemicals",
+  subcategory: "Cleaning Chemicals",
+  type: "Chemical",
+  application: "Cleaning",
+  description:
+    "Cleaning chemical suitable for removing tough stains, deposits and dirt from appropriate surfaces.",
+  specs: [
+    "Effective cleaning action",
+    "Suitable for heavy-duty cleaning",
+    "Helps remove stubborn deposits",
+    "Easy to use",
+  ],
+  tags: ["popular"],
+  image: "/images/Adhesives/white-cat-acid.png",
+},
+
+{
+  id: "ezee-spray",
+  name: "Ezee Spray",
+  category: "adhesives-chemicals",
+  subcategory: "Cleaning & Maintenance",
+  type: "Spray",
+  application: "Cleaning & Maintenance",
+  description:
+    "Convenient spray solution for cleaning and maintenance applications around the home, workshop and furniture.",
+  specs: [
+    "Easy spray application",
+    "Convenient to use",
+    "Suitable for maintenance applications",
+    "Helps clean surfaces",
+  ],
+  tags: ["popular"],
+  image: "/images/Adhesives/ezee-spray.png",
+},
+
+{
+  id: "probond-pvc",
+  name: "Probond for PVC",
+  category: "adhesives-chemicals",
+  subcategory: "PVC Adhesives",
+  type: "Adhesive",
+  application: "PVC Bonding",
+  description:
+    "Strong adhesive designed for reliable bonding of PVC materials in furniture and interior applications.",
+  specs: [
+    "Strong bonding",
+    "Designed for PVC materials",
+    "Suitable for furniture applications",
+    "Reliable adhesion",
+  ],
+  tags: ["popular", "featured"],
+  image: "/images/Adhesives/probond-pvc.png",
+},
+
+{
+  id: "fevicol-heatx",
+  name: "Fevicol HeatX",
+  category: "adhesives-chemicals",
+  subcategory: "Furniture Adhesives",
+  type: "Adhesive",
+  application: "Furniture & Laminate Bonding",
+  description:
+    "Heat-resistant adhesive solution suitable for furniture and interior applications where reliable bonding is required.",
+  specs: [
+    "Heat-resistant bonding",
+    "Suitable for furniture applications",
+    "Reliable adhesion",
+    "Suitable for interior work",
+  ],
+  tags: ["popular", "featured"],
+  image: "/images/Adhesives/fevicol-heatx.png",
+},
+
+{
+  id: "araldite-tile",
+  name: "Araldite for Tile",
+  category: "adhesives-chemicals",
+  subcategory: "Tile Adhesives",
+  type: "Adhesive",
+  application: "Tile Bonding",
+  description:
+    "Strong adhesive solution designed for tile bonding and repair applications where durable adhesion is required.",
+  specs: [
+    "Strong bonding",
+    "Suitable for tile applications",
+    "Durable adhesion",
+    "Useful for repair work",
+  ],
+  tags: ["popular"],
+  image: "/images/Adhesives/araldite-tile.png",
+},
+
+{
+  id: "bond-tite",
+  name: "Bond Tite",
+  category: "adhesives-chemicals",
+  subcategory: "Instant Adhesives",
+  type: "Adhesive",
+  application: "General Bonding",
+  description:
+    "Fast-bonding adhesive suitable for a variety of repair, maintenance and general bonding applications.",
+  specs: [
+    "Fast bonding",
+    "Suitable for repair work",
+    "Easy application",
+    "Useful for multiple materials",
+  ],
+  tags: ["popular"],
+  image: "/images/Adhesives/bond-tite.png",
+},
+
+{
+  id: "wd-40",
+  name: "WD-40",
+  category: "adhesives-chemicals",
+  subcategory: "Maintenance & Lubricants",
+  type: "Maintenance Spray",
+  application: "Lubrication & Maintenance",
+  description:
+    "Versatile maintenance spray used for lubrication, moisture displacement, rust protection and general maintenance applications.",
+  specs: [
+    "Lubricates moving parts",
+    "Helps displace moisture",
+    "Helps protect against rust",
+    "Suitable for maintenance applications",
+  ],
+  tags: ["popular", "featured"],
+  image: "/images/Adhesives/wd-40.png",
+},
+{
+  id: "epoxy-resin",
+  name: "Epoxy Resin",
+  category: "adhesives-chemicals",
+  subcategory: "Epoxy Adhesives",
+  type: "Adhesive",
+  application: "Bonding & Repair",
+  description:
+    "High-strength epoxy resin suitable for bonding, filling and repair applications on various surfaces. It provides durable adhesion and a strong finish after curing.",
+  specs: [
+    "High-strength bonding",
+    "Suitable for repair applications",
+    "Durable after curing",
+    "Suitable for multiple surfaces",
+  ],
+  tags: ["popular"],
+  image: "/images/Adhesives/epoxy-resin.png",
+},
   {
     id: "gen-screws",
     name: "Wood & Self-Tapping Screws",

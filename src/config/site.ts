@@ -3,8 +3,8 @@
  * Replace the placeholder values below with the real business details.
  */
 export const site = {
-  name: "Krushnai Tredars",
-  legalName: "Krushnai Tredars",
+  name: "Krushnai Traders",
+  legalName: "Krushnai Traders",
   tagline: "Everything You Need to Build, Furnish & Finish.",
   subTagline: "From Plywood to Hardware. From Bathrooms to Power Tools.",
   description:
@@ -17,7 +17,7 @@ export const site = {
   whatsapp: "918767415075", // digits only, with country code
   email: "sarvadnyadhole@gmail.com",
   address: {
-    line1: "Krushnai Tredars, Near BSNL Tower Khuldabad Rd, Phulambri",
+    line1: "Krushnai Traders, Near BSNL Tower Khuldabad Rd, Phulambri",
     line2: "Chhatrapati Sambhajinagar",
     state: "Maharashtra",
     pincode: "431111",
@@ -27,7 +27,7 @@ export const site = {
     
   ],
   mapEmbedUrl:
-  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3142.15553921432!2d75.413994!3d20.0853108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdbbf0051053899%3A0x6c192573a4a1b322!2sKrushnai%20Tredars!5e1!3m2!1sen!2sin!4v1789308134497!5m2!1sen!2sin",
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3127.5180685025857!2d75.41141907427911!3d20.085315819514655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdbbf0051053899%3A0x6c192573a4a1b322!2sKrushnai%20Traders!5e1!3m2!1sen!2sin!4v1789549565739!5m2!1sen!2sin",
   social: {
     facebook: "#",
     instagram: "#",

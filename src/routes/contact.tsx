@@ -16,7 +16,7 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Contact Krushnai Tredars for plywood, hardware, bathroom accessories, door fittings and power tools. Call, WhatsApp, email or send an enquiry for a quotation.",
+          "Contact Krushnai Traders for plywood, hardware, bathroom accessories, door fittings and power tools. Call, WhatsApp, email or send an enquiry for a quotation.",
       },
       { property: "og:title", content: `Contact ${site.name}` },
       { property: "og:description", content: "Phone, WhatsApp, email and showroom address for enquiries." },

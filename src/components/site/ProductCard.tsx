@@ -34,7 +34,7 @@ export function ProductCard({ product }: { product: Product }) {
       <div className="flex flex-1 flex-col p-5">
         <p className="text-[0.68rem] tracking-[0.16em] text-muted-foreground uppercase">{categoryName}</p>
         <h3 className="mt-1.5 text-base leading-snug">{product.name}</h3>
-        <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{product.description}</p>
+        <p className="mt-2  text-sm text-muted-foreground">{product.description}</p>
         {product.specs?.length ? (
           <ul className="mt-3 space-y-1 text-xs text-muted-foreground">
             {product.specs.slice(0, 2).map((s) => (
