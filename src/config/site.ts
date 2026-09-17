@@ -29,8 +29,8 @@ export const site = {
   mapEmbedUrl:
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3127.5180685025857!2d75.41141907427911!3d20.085315819514655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdbbf0051053899%3A0x6c192573a4a1b322!2sKrushnai%20Traders!5e1!3m2!1sen!2sin!4v1789549565739!5m2!1sen!2sin",
   social: {
-    facebook: "#",
-    instagram: "#",
+    facebook: "https://www.facebook.com/share/1FFVVHKtHt/",
+    instagram: "https://www.instagram.com/krushnai.traders/",
     youtube: "#",
   },
   stats: [

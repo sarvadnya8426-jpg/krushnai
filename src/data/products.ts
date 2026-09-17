@@ -421,6 +421,25 @@ export const products: Product[] = [
     image: "/images/LED/rectangleled.png",
   },
   {
+  id: "shaving-mirror",
+  name: "Shaving Mirror 360 ° ",
+  category: "led-mirrors",
+  subcategory: "Shaving Mirrors",
+  type: "Shaving Mirror",
+  application: "Bathroom",
+  description:
+    "Elegant wall-mounted shaving mirror. ",
+  specs: [
+    "Round mirror design",
+    "Adjustable wall-mounted arm",
+    "Polished metal finish",
+    "Suitable for bathroom use",
+    "Compact and practical design",
+  ],
+  tags: ["popular"],
+  image: "/images/LED/shaving-mirror.png",
+},
+  {
   id: "bath-mirror-cabinet",
   name: "Mirror Cabinet",
   category: "led-mirrors",

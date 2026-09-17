@@ -17,7 +17,7 @@ export function CategoryCard({ category }: { category: Category }) {
       </div>
       <div className="p-5">
         <h3 className="text-lg">{category.name}</h3>
-        <p className="mt-2  text-sm text-muted-foreground">{category.description}</p>
+        <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{category.description}</p>
         <Link
           to="/products"
           search={{ category: category.slug }}
