@@ -15,13 +15,16 @@ export const site = {
     return this.phones[0] as string;
   },
   whatsapp: "918767415075", // digits only, with country code
-  email: "sarvadnyadhole@gmail.com",
+  email: "krushnaitraders.work@gmail.com",
   address: {
     line1: "Krushnai Traders, Near BSNL Tower Khuldabad Rd, Phulambri",
     line2: "Chhatrapati Sambhajinagar",
     state: "Maharashtra",
     pincode: "431111",
+    
   },
+  
+  
   hours: [
     { days: "Monday – Sunday", time: "9:30 AM – 8:00 PM" },
     
@@ -34,7 +37,7 @@ export const site = {
     youtube: "#",
   },
   stats: [
-    { value: "20+", label: "Years Experience" },
+    { value: "25+", label: "Years Experience" },
     { value: "1000+", label: "Happy Customers" },
     { value: "500+", label: "Products" },
     { value: "Quality", label: "Assured" },
