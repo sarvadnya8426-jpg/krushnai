@@ -1,4 +1,4 @@
-import showroom from "@/assets/showroom.jpg";
+import showroom from "@/assets/showroom1.png";
 import { categories } from "./categories";
 
 const img = (slug: string) => categories.find((c) => c.slug === slug)!.image;

@@ -1,6 +1,6 @@
 import plywood from "@/assets/cat-plywood.jpg";
 import laminates from "@/assets/cat-laminates.jpg";
-import hardware from "@/assets/cat-hardware.jpg";
+import hardware from "@/assets/furniture.png";
 import kitchen from "@/assets/cat-kitchen.jpg";
 import wardrobe from "@/assets/cat-wardrobe.jpg";
 import door from "@/assets/cat-door.jpg";

@@ -32,7 +32,7 @@ export const products: Product[] = [
     description: "Everyday interior grade plywood for wardrobes, beds and cabinetry.",
     specs: ["Sizes: 8x4 ft / 6x4 ft / 6x3 ft", "Thickness:  6 / 8 / 12 / 18 / 25 mm"],
     tags: ["popular", "featured"],
-    image: img("plywood-boards"),
+    image: "/images/ply/plywood.png",
   },
   {
     id: "ply-bwp",
@@ -44,7 +44,7 @@ export const products: Product[] = [
     description: "Boiling waterproof plywood suited to kitchens, bathrooms and wet areas.",
     specs: ["Sizes: 8x4 ft", "Thickness: 6 – 19 mm"],
     tags: ["featured"],
-    image: img("plywood-boards"),
+    image: "/images/ply/bwp.png",
   },
   {
     id: "ply-bwr",
@@ -54,7 +54,7 @@ export const products: Product[] = [
     type: "Board",
     application: "Modular Kitchen",
     description: "Moisture resistant plywood for kitchen carcasses and utility furniture.",
-    image: img("plywood-boards"),
+    image: "/images/ply/bwr.png",
   },
   {
     id: "board-mdf",
@@ -65,7 +65,7 @@ export const products: Product[] = [
     application: "Interior Projects",
     description: "Smooth, uniform board ideal for painted shutters, panelling and CNC work.",
     specs: ["Thickness: 6 / 8 / 12 / 18 mm"],
-    image: img("plywood-boards"),
+    image: "/images/ply/mdf.png",
   },
   {
     id: "board-hdhmr",
@@ -76,7 +76,7 @@ export const products: Product[] = [
     application: "Modular Kitchen",
     description: "High density moisture resistant board with excellent screw holding.",
     tags: ["new"],
-    image: img("plywood-boards"),
+    image: "/images/ply/hdhmr.png",
   },
   {
     id: "board-block",
@@ -86,7 +86,7 @@ export const products: Product[] = [
     type: "Board",
     application: "Home Furniture",
     description: "Lightweight core board for long shelves, doors and table tops.",
-    image: img("plywood-boards"),
+    image: "/images/ply/block.png",
   },
   {
     id: "lam-decorative",
@@ -98,7 +98,7 @@ export const products: Product[] = [
     description: "Wide catalogue of wood, solid, stone and textured finishes.",
     specs: ["Size: 8x4 ft", "Thickness: 0.8 / 1.0 mm"],
     tags: ["popular"],
-    image: img("laminates"),
+    image: "/images/laminate/laminate.png",
   },
   {
     id: "lam-acrylic",
@@ -109,7 +109,7 @@ export const products: Product[] = [
     application: "Modular Kitchen",
     description: "Mirror finish acrylic panels for premium kitchen and wardrobe shutters.",
     tags: ["featured"],
-    image: img("laminates"),
+    image: "/images/laminate/acrylic.png",
   },
   {
     id: "lam-edge",
@@ -120,7 +120,7 @@ export const products: Product[] = [
     application: "Furniture Manufacturing",
     description: "Matching edge bands in multiple widths and finishes.",
     specs: ["Widths: 22 / 28 / 35 mm"],
-    image: img("laminates"),
+    image: "/images/laminate/edge.png",
   },
   {
   id: "pvc-laminate",
@@ -139,7 +139,7 @@ export const products: Product[] = [
     "Suitable for furniture and interior applications",
   ],
   tags: ["popular", "featured"],
-  image: "/images/Laminates/pvc-laminate.png",
+  image: "/images/laminate/pvc.png",
 },
   {
     id: "hw-softclose-hinge",
@@ -437,7 +437,7 @@ export const products: Product[] = [
     "Compact and practical design",
   ],
   tags: ["popular"],
-  image: "/images/LED/shaving-mirror.png",
+  image: "/images/LED/shaving.png",
 },
   {
   id: "bath-mirror-cabinet",
@@ -699,7 +699,7 @@ export const products: Product[] = [
     "Reliable adhesion",
   ],
   tags: ["popular", "featured"],
-  image: "/images/Adhesives/probond-pvc.png",
+  image: "/images/adhesivechemical/probond.png",
 },
 
 {
@@ -718,7 +718,7 @@ export const products: Product[] = [
     "Suitable for interior work",
   ],
   tags: ["popular", "featured"],
-  image: "/images/Adhesives/fevicol-heatx.png",
+  image: "/images/adhesivechemical/heatx.png",
 },
 
 {
