@@ -64,8 +64,7 @@ export const gallery: GalleryItem[] = [
   { src: showroom, alt: "Krushnai Traders showroom interior", filter: "Showroom" },
   { src: img("plywood-boards"), alt: "Plywood and board stock", filter: "Showroom" },
   { src: img("modular-kitchen"), alt: "Modular kitchen with pull-out accessories", filter: "Kitchens" },
-  { src: img("wardrobe-accessories"), alt: "Wardrobe interior with fittings", filter: "Furniture" },
-  { src: img("furniture-hardware"), alt: "Furniture hardware and fittings", filter: "Furniture" },
+  { src: "/images/gallery/mainshop.jpeg", alt: "Krushnai Traders main shop", filter: "Showroom" },
   { src: img("bathroom-accessories"), alt: "Bathroom with premium accessories", filter: "Bathrooms" },
   { src: img("led-mirrors"), alt: "Backlit LED bathroom mirror", filter: "Bathrooms" },
   { src: img("door-hardware"), alt: "Brass door handle and lock", filter: "Doors" },
@@ -73,7 +72,25 @@ export const gallery: GalleryItem[] = [
   { src: img("power-tool-accessories"), alt: "Drill bits and cutting discs", filter: "Tools" },
   { src: img("laminates"), alt: "Laminate display in the showroom", filter: "Showroom" },
   { src: img("general-hardware"), alt: "General hardware and fasteners", filter: "Showroom" },
-];
+   { src: "/images/gallery/IMG20250405174643.jpeg", alt: "Mortise handle", filter: "Furniture" },
+    { src: "/images/gallery/IMG20250405174634.jpeg", alt: "Mortise handle", filter: "Furniture" },
+     
+      { src: "/images/gallery/handle.jpeg", alt: "Handle", filter: "Furniture" },
+       { src: "/images/gallery/IMG20250405174737.jpeg", alt: "Handle", filter: "Showroom" },
+        { src: "/images/gallery/20250419_161317-COLLAGE.jpeg", alt: "Premium Hanger", filter: "Furniture" },
+         { src: "/images/gallery/IMG20250405174751.jpeg", alt: "handle", filter: "Showroom" },
+          { src: "/images/gallery/cordlessdrill.jpeg", alt: "Cordless drill", filter: "Tools" },
+           { src: "/images/gallery/IMG20250428165110.jpeg", alt: "Cordless Grinder", filter: "Tools" },
+            { src: "/images/gallery/IMG20250515121205.jpeg", alt: "Cordless Hammer", filter: "Tools" },
+             { src: "/images/gallery/IMG20251126120613.jpeg", alt: "Hardware", filter: "Showroom" },
+              { src: "/images/gallery/IMG20251126120822.jpeg", alt: "Bathroom Accessories Display", filter: "Showroom" },
+                { src: "/images/gallery/IMG20250428170937.jpeg", alt: "Soap Dish", filter: "Showroom" },
+                 { src: "/images/gallery/IMG20250805180019.jpeg", alt: "Door Knocker", filter: "Doors" },
+                 { src: "/images/gallery/IMG20250405174826.jpeg", alt: "krushnai Traders", filter: "Showroom" },
+
+
+
+    ];
 
 export const galleryFilters = ["All", "Showroom", "Furniture", "Kitchens", "Bathrooms", "Doors", "Tools"];
 
