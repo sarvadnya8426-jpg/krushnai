@@ -38,7 +38,7 @@ export const site = {
   },
   stats: [
     { value: "25+", label: "Years Experience" },
-    { value: "1000+", label: "Happy Customers" },
+    { value: "100K+", label: "Happy Customers" },
     { value: "500+", label: "Products" },
     { value: "Quality", label: "Assured" },
   ],

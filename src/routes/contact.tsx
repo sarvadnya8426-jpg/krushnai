@@ -58,8 +58,21 @@ function ContactPage() {
       setErrors(next);
       return;
     }
-    setErrors({});
+        setErrors({});
+
+    const lines = [
+      `New Enquiry from Website`,
+      `Name: ${parsed.data.name}`,
+      `Phone: ${parsed.data.phone}`,
+      parsed.data.email ? `Email: ${parsed.data.email}` : null,
+      `Requirement: ${parsed.data.requirement}`,
+      parsed.data.message ? `Message: ${parsed.data.message}` : null,
+    ].filter(Boolean);
+    const text = encodeURIComponent(lines.join("\n"));
+    window.open(`https://wa.me/${site.whatsapp}?text=${text}`, "_blank", "noopener,noreferrer");
+
     setSent(true);
+    event.currentTarget.reset();
   };
 
   return (
@@ -86,6 +99,7 @@ function ContactPage() {
                 {site.address.line2}
                 <br />
                 {site.address.state} – {site.address.pincode}
+
               </Detail>
               <Detail icon={Phone} title="Phone">
                 {site.phones.map((p) => (
