@@ -52,7 +52,7 @@ function BrandsPage() {
       <SectionHeading
         eyebrow="Our Brands"
         title="Brands You Can Trust"
-        subtitle="Brand names and logos below are placeholders. They can be replaced with the brands actually stocked at the showroom."
+        subtitle=""
       />
       <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
        {brands.map((brand) => (

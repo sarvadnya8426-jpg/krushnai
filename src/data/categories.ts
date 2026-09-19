@@ -1,14 +1,14 @@
-import plywood from "@/assets/cat-plywood.jpg";
-import laminates from "@/assets/cat-laminates.jpg";
+import plywood from "@/assets/categorycover/plywood.png";
+import laminates from "@/assets/categorycover/laminate.png";
 import hardware from "@/assets/furniture.png";
 import kitchen from "@/assets/cat-kitchen.jpg";
 import wardrobe from "@/assets/cat-wardrobe.jpg";
-import door from "@/assets/cat-door.jpg";
+import door from "@/assets/categorycover/doorhardware.png";
 import bathroom from "@/assets/cat-bathroom.jpg";
-import mirror from "@/assets/cat-mirror.jpg";
-import tools from "@/assets/cat-tools.jpg";
-import toolAccessories from "@/assets/cat-accessories.jpg";
-import adhesives from "@/assets/cat-adhesives.jpg";
+import mirror from "@/assets/categorycover/mirror.png";
+import tools from "@/assets/categorycover/powertool.png";
+import toolAccessories from "@/assets/categorycover/powertoolaccessories.png";
+import adhesives from "@/assets/categorycover/adhesives.png";
 import general from "@/assets/cat-general.jpg";
 
 export type Category = {

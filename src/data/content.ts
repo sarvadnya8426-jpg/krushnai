@@ -1,5 +1,11 @@
 import showroom from "@/assets/showroom1.png";
 import { categories } from "./categories";
+import solutionKitchen from "@/assets/solution/modernkitchen.png";
+import solutionHome from "@/assets/solution/homefurniture.png";
+import solutionOffice from "@/assets/solution/officefurniture.png";
+import solutionDoor from "@/assets/solution/doorsolution.png";
+import solutionWardrobe from "@/assets/solution/wardrobe.png";
+import solutionWorkshop from "@/assets/solution/workshop.png";
 
 const img = (slug: string) => categories.find((c) => c.slug === slug)!.image;
 
@@ -7,17 +13,17 @@ export const solutions = [
   {
     title: "Modular Kitchens",
     description: "Plywood, hardware and kitchen accessories.",
-    image: img("modular-kitchen"),
+    image: solutionKitchen,
   },
   {
     title: "Premium Wardrobes",
     description: "Boards, fittings, handles and wardrobe accessories.",
-    image: img("wardrobe-accessories"),
+    image: solutionWardrobe,
   },
   {
     title: "Home Furniture",
     description: "Plywood, laminates, fittings and hardware.",
-    image: img("plywood-boards"),
+    image: solutionHome,
   },
   {
     title: "Bathroom Upgrade",
@@ -27,17 +33,17 @@ export const solutions = [
   {
     title: "Doors & Entrance Solutions",
     description: "Door locks, handles, hinges and complete door kits.",
-    image: img("door-hardware"),
+    image: solutionDoor,
   },
   {
     title: "Professional Workshop",
     description: "Power tools, drill bits, cutting discs and accessories.",
-    image: img("power-tools"),
+    image: solutionWorkshop,
   },
   {
     title: "Office Furniture",
     description: "Furniture materials and professional hardware.",
-    image: img("laminates"),
+    image: solutionOffice,
   },
   {
     title: "Interior Projects",
