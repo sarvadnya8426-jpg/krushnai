@@ -34,9 +34,11 @@ import { SectionHeading } from "@/components/site/SectionHeading";
 import { CategoryCard } from "@/components/site/CategoryCard";
 import { useQuote } from "@/components/site/QuoteProvider";
 import { site, whatsappLink } from "@/config/site";
-import { categories } from "@/data/categories";
+
 import { solutions, testimonials, trustFeatures, showroom, brandList } from "@/data/content";
 import hero from "@/assets/hero-interior.jpg";
+import { useEffect, useState } from "react";
+import { getSupabase } from "@/lib/supabase";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -60,9 +62,43 @@ export const Route = createFileRoute("/")({
 });
 
 const trustIcons = [BadgeCheck, Boxes, HandCoins, Headset, Sparkles];
+type Category = {
+  slug: string;
+  name: string;
+  description: string | null;
+  image: string | null;
+  items: string[];
+};
 
 function Home() {
   const { openQuote } = useQuote();
+
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [categoriesLoading, setCategoriesLoading] = useState(true);
+
+  useEffect(() => {
+    const loadCategories = async () => {
+      try {
+        const { data, error } = await getSupabase()
+          .from("categories")
+          .select("*")
+          .order("created_at", { ascending: true });
+
+        if (error) {
+          console.error("Failed to load categories:", error);
+          return;
+        }
+
+        setCategories(data ?? []);
+      } catch (error) {
+        console.error("Category loading error:", error);
+      } finally {
+        setCategoriesLoading(false);
+      }
+    };
+
+    loadCategories();
+  }, []);
 
   return (
     <>
@@ -176,10 +212,20 @@ function Home() {
             subtitle="Twelve categories covering materials, fittings, finishes and tools for every interior and construction project."
           />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {categories.map((c) => (
-              <CategoryCard key={c.slug} category={c} />
-            ))}
-          </div>
+  {categoriesLoading ? (
+    <p className="col-span-full text-center text-muted-foreground">
+      Loading categories...
+    </p>
+  ) : categories.length > 0 ? (
+    categories.map((c) => (
+      <CategoryCard key={c.slug} category={c} />
+    ))
+  ) : (
+    <p className="col-span-full text-center text-muted-foreground">
+      No categories available.
+    </p>
+  )}
+</div>
           <div className="mt-10 text-center">
             <Button size="lg" variant="outline" asChild>
               <Link to="/products">View Full Catalogue</Link>
