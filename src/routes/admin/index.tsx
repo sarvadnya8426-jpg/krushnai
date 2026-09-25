@@ -91,24 +91,35 @@ function AdminDashboard() {
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="rounded-2xl bg-white p-6 shadow-sm">
+          {/* Products */}
+          <button
+            type="button"
+            onClick={() => navigate({ to: "/admin/products" })}
+            className="rounded-2xl bg-white p-6 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+          >
             <h3 className="font-semibold text-slate-900">
               Products
             </h3>
             <p className="mt-2 text-sm text-slate-500">
               Manage your products
             </p>
-          </div>
+          </button>
 
-          <div className="rounded-2xl bg-white p-6 shadow-sm">
+          {/* Categories */}
+          <button
+            type="button"
+            onClick={() => navigate({ to: "/admin/categories" })}
+            className="rounded-2xl bg-white p-6 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+          >
             <h3 className="font-semibold text-slate-900">
               Categories
             </h3>
             <p className="mt-2 text-sm text-slate-500">
               Manage product categories
             </p>
-          </div>
+          </button>
 
+          {/* Brands */}
           <div className="rounded-2xl bg-white p-6 shadow-sm">
             <h3 className="font-semibold text-slate-900">
               Brands
@@ -118,14 +129,20 @@ function AdminDashboard() {
             </p>
           </div>
 
-          <div className="rounded-2xl bg-white p-6 shadow-sm">
-            <h3 className="font-semibold text-slate-900">
-              Enquiries
-            </h3>
-            <p className="mt-2 text-sm text-slate-500">
-              View customer enquiries
-            </p>
-          </div>
+          {/* Gallery */}
+<button
+  type="button"
+  onClick={() => navigate({ to: "/admin/gallery" })}
+  className="rounded-2xl bg-white p-6 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+>
+  <h3 className="font-semibold text-slate-900">
+    Gallery
+  </h3>
+
+  <p className="mt-2 text-sm text-slate-500">
+    Manage gallery images
+  </p>
+</button>
         </div>
       </main>
     </div>
