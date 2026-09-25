@@ -1,3 +1,4 @@
+import { getWebsiteSettings, type WebsiteSettings } from "@/lib/siteSettings";
 import pidiliteLogo from "@/assets/brands/pidilite.png";
 import godrejLOGO from "@/assets/brands/godrej.png";
 import fevicolLogo from "@/assets/brands/fevicol.png";
@@ -75,6 +76,8 @@ function Home() {
 
   const [categories, setCategories] = useState<Category[]>([]);
   const [categoriesLoading, setCategoriesLoading] = useState(true);
+    const [websiteSettings, setWebsiteSettings] =
+    useState<WebsiteSettings | null>(null);
 
   useEffect(() => {
     const loadCategories = async () => {
@@ -100,6 +103,15 @@ function Home() {
     loadCategories();
   }, []);
 
+    useEffect(() => {
+    const loadWebsiteSettings = async () => {
+      const data = await getWebsiteSettings();
+      setWebsiteSettings(data);
+    };
+
+    loadWebsiteSettings();
+  }, []);
+
   return (
     <>
       {/* HERO */}
@@ -114,14 +126,18 @@ function Home() {
         <div className="bg-hero-overlay absolute inset-0 -z-10" aria-hidden />
         <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:py-36">
           <div className="fade-up max-w-2xl text-primary-foreground">
-            <p className="eyebrow">{site.subTagline}</p>
+           <p className="eyebrow">
+  {websiteSettings?.subtagline ||
+    "From Plywood to Hardware. From Bathrooms to Power Tools."}
+</p>
             <h1 className="mt-5 font-display text-4xl leading-[1.08] text-balance sm:text-5xl lg:text-6xl">
-              Everything You Need to Build, Furnish &amp; Finish.
-            </h1>
+  {websiteSettings?.tagline ||
+    "Everything You Need to Build, Furnish & Finish."}
+</h1>
             <p className="mt-6 max-w-xl text-base text-primary-foreground/85 sm:text-lg">
-              Premium plywood, furniture hardware, bathroom accessories, door hardware, LED mirrors and
-              power tools — all under one roof.
-            </p>
+  {websiteSettings?.description ||
+    "Premium plywood, furniture hardware, bathroom accessories, door hardware, LED mirrors and power tools — all under one roof."}
+</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button size="lg" onClick={() => openQuote()}>
                 Get a Quote

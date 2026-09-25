@@ -5,6 +5,10 @@ import { Button } from "@/components/ui/button";
 import { site } from "@/config/site";
 import { useQuote } from "./QuoteProvider";
 import { Logo } from "./Logo";
+import {
+  getWebsiteSettings,
+  type WebsiteSettings,
+} from "@/lib/siteSettings";
 
 const links = [
   { to: "/", label: "Home" },
@@ -19,28 +23,60 @@ const links = [
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const [websiteSettings, setWebsiteSettings] =
+    useState<WebsiteSettings | null>(null);
+
   const { openQuote } = useQuote();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
+
     onScroll();
+
     window.addEventListener("scroll", onScroll, { passive: true });
+
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    const loadWebsiteSettings = async () => {
+      const data = await getWebsiteSettings();
+      setWebsiteSettings(data);
+    };
+
+    loadWebsiteSettings();
+  }, []);
+
+  const businessName =
+    websiteSettings?.business_name || site.name;
+
+  const phone =
+    websiteSettings?.phone1 || site.phone;
+
+  const phoneNumber = phone.replace(/\s/g, "");
 
   return (
     <header
       className={`sticky top-0 z-50 w-full border-b transition-all duration-300 ${
-        scrolled ? "border-border bg-background/95 shadow-soft backdrop-blur" : "border-transparent bg-background"
+        scrolled
+          ? "border-border bg-background/95 shadow-soft backdrop-blur"
+          : "border-transparent bg-background"
       }`}
     >
       <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:px-6 lg:py-4">
-        <Link to="/" className="flex min-w-0 items-center gap-3" onClick={() => setOpen(false)}>
+        <Link
+          to="/"
+          className="flex min-w-0 items-center gap-3"
+          onClick={() => setOpen(false)}
+        >
           <Logo className="h-20 w-20 shrink-0" />
+
           <span className="min-w-0">
             <span className="block truncate font-display text-lg leading-tight font-semibold sm:text-xl">
-              {site.name}
+              {businessName}
             </span>
+
             <span className="hidden text-[0.68rem] tracking-[0.18em] text-muted-foreground uppercase sm:block">
               Plywood • Hardware • Interiors
             </span>
@@ -54,14 +90,19 @@ export function Navbar() {
                 key={link.to}
                 to={link.to}
                 activeOptions={{ exact: link.to === "/" }}
-                activeProps={{ className: "text-foreground after:w-full" }}
-                inactiveProps={{ className: "text-muted-foreground" }}
+                activeProps={{
+                  className: "text-foreground after:w-full",
+                }}
+                inactiveProps={{
+                  className: "text-muted-foreground",
+                }}
                 className="relative px-3 py-2 text-sm font-medium transition-colors after:absolute after:bottom-1 after:left-3 after:h-px after:w-0 after:bg-accent after:transition-all after:duration-300 hover:text-foreground hover:after:w-[calc(100%-1.5rem)]"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
+
           <Button
             variant="ghost"
             size="icon"
@@ -69,13 +110,18 @@ export function Navbar() {
             className="hidden sm:inline-flex"
             aria-label="Call us"
           >
-            <a href={`tel:${site.phone.replace(/\s/g, "")}`}>
+            <a href={`tel:${phoneNumber}`}>
               <Phone className="h-4 w-4" />
             </a>
           </Button>
-          <Button className="ml-1 hidden sm:inline-flex" onClick={() => openQuote()}>
+
+          <Button
+            className="ml-1 hidden sm:inline-flex"
+            onClick={() => openQuote()}
+          >
             Get a Quote
           </Button>
+
           <button
             type="button"
             className="ml-1 inline-flex h-10 w-10 items-center justify-center rounded-md border border-border lg:hidden"
@@ -83,7 +129,11 @@ export function Navbar() {
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
           >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {open ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
           </button>
         </div>
       </div>
@@ -105,6 +155,7 @@ export function Navbar() {
               </li>
             ))}
           </ul>
+
           <Button
             className="mt-4 w-full"
             size="lg"

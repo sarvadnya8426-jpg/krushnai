@@ -32,6 +32,7 @@ export const Route = createFileRoute("/gallery")({
     ],
     links: [{ rel: "canonical", href: "/gallery" }],
   }),
+
   component: GalleryPage,
 });
 
@@ -55,26 +56,42 @@ const galleryFilters = [
 function GalleryPage() {
   const [filter, setFilter] = useState("All");
   const [lightbox, setLightbox] = useState<number | null>(null);
+
   const [items, setItems] = useState<GalleryItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState("");
 
   useEffect(() => {
     const loadGallery = async () => {
-      const supabase = getSupabase();
+      setLoading(true);
+      setLoadError("");
 
-      const { data, error } = await supabase
-        .from("gallery")
-        .select("id, src, alt, filter")
-        .order("created_at", { ascending: true });
+      try {
+        const { data, error } = await getSupabase()
+          .from("gallery")
+          .select("id, src, alt, filter")
+          .order("created_at", { ascending: true });
 
-      if (error) {
+        if (error) {
+          console.error("Failed to load gallery:", error);
+
+          setLoadError(
+            "Unable to load the gallery. Please try again later.",
+          );
+
+          return;
+        }
+
+        setItems((data ?? []) as GalleryItem[]);
+      } catch (error) {
         console.error("Failed to load gallery:", error);
-        setLoading(false);
-        return;
-      }
 
-      setItems(data ?? []);
-      setLoading(false);
+        setLoadError(
+          "Unable to load the gallery. Please try again later.",
+        );
+      } finally {
+        setLoading(false);
+      }
     };
 
     loadGallery();
@@ -116,6 +133,16 @@ function GalleryPage() {
       {loading ? (
         <div className="mt-16 text-center text-muted-foreground">
           Loading gallery...
+        </div>
+      ) : loadError ? (
+        <div className="mt-16 rounded-md border border-dashed border-border p-10 text-center">
+          <h2 className="text-lg">
+            Unable to load gallery
+          </h2>
+
+          <p className="mt-2 text-sm text-muted-foreground">
+            {loadError}
+          </p>
         </div>
       ) : filteredItems.length === 0 ? (
         <div className="mt-16 text-center text-muted-foreground">

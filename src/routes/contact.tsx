@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getWebsiteSettings, type WebsiteSettings } from "@/lib/siteSettings";
 import { CheckCircle2, Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
@@ -41,6 +42,17 @@ const schema = z.object({
 function ContactPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [sent, setSent] = useState(false);
+    const [websiteSettings, setWebsiteSettings] =
+    useState<WebsiteSettings | null>(null);
+
+      useEffect(() => {
+    const loadWebsiteSettings = async () => {
+      const data = await getWebsiteSettings();
+      setWebsiteSettings(data);
+    };
+
+    loadWebsiteSettings();
+  }, []);
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -69,7 +81,11 @@ function ContactPage() {
       parsed.data.message ? `Message: ${parsed.data.message}` : null,
     ].filter(Boolean);
     const text = encodeURIComponent(lines.join("\n"));
-    window.open(`https://wa.me/${site.whatsapp}?text=${text}`, "_blank", "noopener,noreferrer");
+   window.open(
+  `https://wa.me/${(websiteSettings?.whatsapp || site.whatsapp).replace(/\D/g, "")}?text=${text}`,
+  "_blank",
+  "noopener,noreferrer"
+);
 
     setSent(true);
     event.currentTarget.reset();
@@ -94,30 +110,45 @@ function ContactPage() {
             <SectionHeading align="left" eyebrow="Reach Us" title="Shop  & Contact Details" />
             <ul className="mt-8 space-y-6">
               <Detail icon={MapPin} title="Address">
-                {site.address.line1}
-                <br />
-                {site.address.line2}
-                <br />
-                {site.address.state} – {site.address.pincode}
-
-              </Detail>
+  {websiteSettings?.address1 || site.address.line1}
+  <br />
+  {websiteSettings?.address2 || site.address.line2}
+  <br />
+  {(websiteSettings?.city || site.address.city)},{" "}
+  {websiteSettings?.state || site.address.state} –{" "}
+  {websiteSettings?.pincode || site.address.pincode}
+</Detail>
               <Detail icon={Phone} title="Phone">
-                {site.phones.map((p) => (
-                  <a key={p} href={`tel:${p.replace(/\s/g, "")}`} className="block hover:text-accent">
-                    {p}
-                  </a>
-                ))}
-              </Detail>
+  {[websiteSettings?.phone1 || site.phones[0], websiteSettings?.phone2 || site.phones[1]]
+    .filter(Boolean)
+    .map((p) => (
+      <a
+        key={p}
+        href={`tel:${p.replace(/\s/g, "")}`}
+        className="block hover:text-accent"
+      >
+        {p}
+      </a>
+    ))}
+</Detail>
               <Detail icon={MessageCircle} title="WhatsApp">
-                <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
-                  Send a WhatsApp enquiry
-                </a>
-              </Detail>
+  <a
+    href={`https://wa.me/${(websiteSettings?.whatsapp || site.whatsapp).replace(/\D/g, "")}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-accent"
+  >
+    Send a WhatsApp enquiry
+  </a>
+</Detail>
               <Detail icon={Mail} title="Email">
-                <a href={`mailto:${site.email}`} className="hover:text-accent">
-                  {site.email}
-                </a>
-              </Detail>
+  <a
+    href={`mailto:${websiteSettings?.email || site.email}`}
+    className="hover:text-accent"
+  >
+    {websiteSettings?.email || site.email}
+  </a>
+</Detail>
               <Detail icon={Clock} title="Business Hours">
                 {site.hours.map((h) => (
                   <span key={h.days} className="block">

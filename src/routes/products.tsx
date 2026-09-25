@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/site/ProductCard";
 import { SectionHeading } from "@/components/site/SectionHeading";
-
 import { site } from "@/config/site";
 import { getSupabase } from "@/lib/supabase";
 
@@ -52,6 +51,7 @@ export const Route = createFileRoute("/products")({
 });
 
 const sortOptions = ["Featured", "New Arrivals", "Popular"] as const;
+
 type Category = {
   slug: string;
   name: string;
@@ -77,13 +77,12 @@ type Product = {
 function ProductsPage() {
   const { category: initialCategory } = Route.useSearch();
 
-  // Products loaded from Supabase
   const [products, setProducts] = useState<Product[]>([]);
-const [loading, setLoading] = useState(true);
-const [loadError, setLoadError] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState("");
 
-const [categories, setCategories] = useState<Category[]>([]);
-const [categoriesLoading, setCategoriesLoading] = useState(true);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [categoriesLoading, setCategoriesLoading] = useState(true);
 
   // Filters
   const [query, setQuery] = useState("");
@@ -113,7 +112,6 @@ const [categoriesLoading, setCategoriesLoading] = useState(true);
           setLoadError(
             "Unable to load products. Please try again later.",
           );
-          setLoading(false);
           return;
         }
 
@@ -131,32 +129,39 @@ const [categoriesLoading, setCategoriesLoading] = useState(true);
     loadProducts();
   }, []);
 
-
+  // Load categories from Supabase
   useEffect(() => {
-  const loadCategories = async () => {
-    setCategoriesLoading(true);
+    const loadCategories = async () => {
+      setCategoriesLoading(true);
 
-    try {
-      const { data, error } = await getSupabase()
-        .from("categories")
-        .select("*")
-        .order("created_at", { ascending: true });
+      try {
+        const { data, error } = await getSupabase()
+          .from("categories")
+          .select("*")
+          .order("created_at", { ascending: true });
 
-      if (error) {
+        if (error) {
+          console.error("Failed to load categories:", error);
+          return;
+        }
+
+        setCategories((data ?? []) as Category[]);
+      } catch (error) {
         console.error("Failed to load categories:", error);
-        return;
+      } finally {
+        setCategoriesLoading(false);
       }
+    };
 
-      setCategories((data ?? []) as Category[]);
-    } catch (error) {
-      console.error("Failed to load categories:", error);
-    } finally {
-      setCategoriesLoading(false);
-    }
-  };
+    loadCategories();
+  }, []);
 
-  loadCategories();
-}, []);
+  // Keep category filter synchronized with URL
+  useEffect(() => {
+    setCategory(initialCategory ?? "");
+    setSubcategory("");
+  }, [initialCategory]);
+
   // Generate subcategories from Supabase products
   const subcategoryOptions = useMemo(
     () =>
@@ -371,22 +376,22 @@ const [categoriesLoading, setCategoriesLoading] = useState(true);
           >
             <div className="space-y-5 rounded-md border border-border bg-card p-5">
               <FilterSelect
-  label="Category"
-  value={category}
-  onChange={(v) => {
-    setCategory(v);
-    setSubcategory("");
-  }}
-  options={categories.map((c) => ({
-    value: c.slug,
-    label: c.name,
-  }))}
-  emptyNote={
-    categoriesLoading
-      ? "Loading categories..."
-      : "No categories available."
-  }
-/>
+                label="Category"
+                value={category}
+                onChange={(v) => {
+                  setCategory(v);
+                  setSubcategory("");
+                }}
+                options={categories.map((c) => ({
+                  value: c.slug,
+                  label: c.name,
+                }))}
+                emptyNote={
+                  categoriesLoading
+                    ? "Loading categories..."
+                    : "No categories available."
+                }
+              />
 
               <FilterSelect
                 label="Subcategory"
@@ -544,10 +549,7 @@ function FilterSelect({
         </option>
 
         {options.map((o) => (
-          <option
-            key={o.value}
-            value={o.value}
-          >
+          <option key={o.value} value={o.value}>
             {o.label}
           </option>
         ))}

@@ -65,6 +65,7 @@ function AdminDashboard() {
             <h1 className="text-2xl font-bold text-slate-900">
               Krushnai Traders
             </h1>
+
             <p className="text-sm text-slate-500">
               Admin Dashboard
             </p>
@@ -100,6 +101,7 @@ function AdminDashboard() {
             <h3 className="font-semibold text-slate-900">
               Products
             </h3>
+
             <p className="mt-2 text-sm text-slate-500">
               Manage your products
             </p>
@@ -114,6 +116,7 @@ function AdminDashboard() {
             <h3 className="font-semibold text-slate-900">
               Categories
             </h3>
+
             <p className="mt-2 text-sm text-slate-500">
               Manage product categories
             </p>
@@ -124,25 +127,41 @@ function AdminDashboard() {
             <h3 className="font-semibold text-slate-900">
               Brands
             </h3>
+
             <p className="mt-2 text-sm text-slate-500">
               Manage brands
             </p>
           </div>
 
           {/* Gallery */}
-<button
-  type="button"
-  onClick={() => navigate({ to: "/admin/gallery" })}
-  className="rounded-2xl bg-white p-6 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-md"
->
-  <h3 className="font-semibold text-slate-900">
-    Gallery
-  </h3>
+          <button
+            type="button"
+            onClick={() => navigate({ to: "/admin/gallery" })}
+            className="rounded-2xl bg-white p-6 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+          >
+            <h3 className="font-semibold text-slate-900">
+              Gallery
+            </h3>
 
-  <p className="mt-2 text-sm text-slate-500">
-    Manage gallery images
-  </p>
-</button>
+            <p className="mt-2 text-sm text-slate-500">
+              Manage gallery images
+            </p>
+          </button>
+
+          {/* Website Settings */}
+          <button
+            type="button"
+            onClick={() => navigate({ to: "/admin/settings" })}
+            className="rounded-2xl bg-white p-6 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+          >
+            <h3 className="font-semibold text-slate-900">
+              Website Settings
+            </h3>
+
+            <p className="mt-2 text-sm text-slate-500">
+              Manage business information
+            </p>
+          </button>
         </div>
       </main>
     </div>
