@@ -1,5 +1,11 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState, type FormEvent } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type ChangeEvent,
+  type FormEvent,
+} from "react";
 import { getSupabase } from "@/lib/supabase";
 
 export const Route = createFileRoute("/admin/products/")({
@@ -55,6 +61,9 @@ function AdminProducts() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
+
+  const imageInputRef = useRef<HTMLInputElement | null>(null);
+const [uploadingImage, setUploadingImage] = useState(false);
 
   useEffect(() => {
     checkAdminAndLoadProducts();
@@ -192,6 +201,69 @@ function AdminProducts() {
       [field]: value,
     }));
   };
+
+  const handleImageUpload = async (
+  event: ChangeEvent<HTMLInputElement>
+) => {
+  const file = event.target.files?.[0];
+
+  if (!file) return;
+
+  if (!file.type.startsWith("image/")) {
+    setError("Please select a valid image file.");
+    return;
+  }
+
+  if (file.size > 5 * 1024 * 1024) {
+    setError("Image size must be less than 5 MB.");
+    return;
+  }
+
+  setUploadingImage(true);
+  setError("");
+
+  try {
+    const fileExtension = file.name.split(".").pop()?.toLowerCase() || "jpg";
+
+    const safeName = file.name
+      .replace(/\.[^/.]+$/, "")
+      .replace(/[^a-zA-Z0-9-_]/g, "-")
+      .toLowerCase();
+
+    const fileName = `${Date.now()}-${safeName}.${fileExtension}`;
+
+    const { error: uploadError } = await getSupabase()
+      .storage
+      .from("product-images")
+      .upload(fileName, file, {
+        cacheControl: "3600",
+        upsert: false,
+      });
+
+    if (uploadError) {
+      throw uploadError;
+    }
+
+    const { data } = getSupabase()
+      .storage
+      .from("product-images")
+      .getPublicUrl(fileName);
+
+    setForm((current) => ({
+      ...current,
+      image: data.publicUrl,
+    }));
+  } catch (uploadError) {
+    console.error("Failed to upload product image:", uploadError);
+    setError("Failed to upload image. Please try again.");
+  } finally {
+    setUploadingImage(false);
+
+    if (imageInputRef.current) {
+      imageInputRef.current.value = "";
+    }
+  }
+};
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -550,19 +622,51 @@ function AdminProducts() {
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-medium text-slate-700">
-                Image Path / URL
-              </label>
+  <label className="mb-2 block text-sm font-medium text-slate-700">
+    Product Image
+  </label>
 
-              <input
-                value={form.image}
-                onChange={(event) =>
-                  handleChange("image", event.target.value)
-                }
-                placeholder="/images/products/product.jpg"
-                className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-slate-500"
-              />
-            </div>
+  <div className="space-y-3">
+    <input
+      ref={imageInputRef}
+      type="file"
+      accept="image/*"
+      onChange={handleImageUpload}
+      className="block w-full cursor-pointer rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-700"
+      disabled={uploadingImage}
+    />
+
+    {uploadingImage && (
+      <p className="text-sm text-slate-500">
+        Uploading image...
+      </p>
+    )}
+
+    {form.image && (
+      <div className="overflow-hidden rounded-lg border border-slate-200 bg-slate-50 p-3">
+        <img
+          src={form.image}
+          alt="Product preview"
+          className="h-40 w-full rounded-md object-contain"
+        />
+      </div>
+    )}
+
+    <input
+      value={form.image}
+      onChange={(event) =>
+        handleChange("image", event.target.value)
+      }
+      placeholder="Or paste an image URL"
+      className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-slate-500"
+    />
+
+    <p className="text-xs text-slate-500">
+      Select an image from your PC, or paste an image URL.
+      Maximum file size: 5 MB.
+    </p>
+  </div>
+</div>
 
             <div className="md:col-span-2">
               <button
