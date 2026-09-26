@@ -58,6 +58,7 @@ type Category = {
   description: string | null;
   image: string | null;
   items: string[];
+  sort_order: number;
 };
 
 type Product = {
@@ -109,15 +110,18 @@ function ProductsPage() {
 
         if (error) {
           console.error("Failed to load products:", error);
+
           setLoadError(
             "Unable to load products. Please try again later.",
           );
+
           return;
         }
 
         setProducts((data ?? []) as Product[]);
       } catch (error) {
         console.error("Failed to load products:", error);
+
         setLoadError(
           "Unable to load products. Please try again later.",
         );
@@ -138,6 +142,7 @@ function ProductsPage() {
         const { data, error } = await getSupabase()
           .from("categories")
           .select("*")
+          .order("sort_order", { ascending: true })
           .order("created_at", { ascending: true });
 
         if (error) {
@@ -222,38 +227,46 @@ function ProductsPage() {
     const q = query.trim().toLowerCase();
 
     const filtered = products.filter((p) => {
+      // Category filter
       if (category && p.category !== category) {
         return false;
       }
 
+      // Subcategory filter
       if (subcategory && p.subcategory !== subcategory) {
         return false;
       }
 
+      // Brand filter
       if (brand && p.brand !== brand) {
         return false;
       }
 
+      // Product type filter
       if (type && p.type !== type) {
         return false;
       }
 
+      // Application filter
       if (application && p.application !== application) {
         return false;
       }
 
+      // Search filter
       if (!q) {
         return true;
       }
 
       return [
         p.name,
+        p.category,
         p.subcategory,
         p.description,
         p.type,
         p.application,
         p.brand,
       ]
+        .filter(Boolean)
         .join(" ")
         .toLowerCase()
         .includes(q);

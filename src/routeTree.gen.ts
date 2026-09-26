@@ -18,6 +18,7 @@ import { Route as ProductsRouteImport } from './routes/products'
 import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
+import { Route as AdminBrandsIndexRouteImport } from './routes/admin/brands/index'
 import { Route as AdminCategoriesIndexRouteImport } from './routes/admin/categories/index'
 import { Route as AdminGalleryIndexRouteImport } from './routes/admin/gallery/index'
 import { Route as AdminProductsIndexRouteImport } from './routes/admin/products/index'
@@ -68,6 +69,11 @@ const AdminLoginRoute = AdminLoginRouteImport.update({
   path: '/admin/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminBrandsIndexRoute = AdminBrandsIndexRouteImport.update({
+  id: '/admin/brands/',
+  path: '/admin/brands/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminCategoriesIndexRoute = AdminCategoriesIndexRouteImport.update({
   id: '/admin/categories/',
   path: '/admin/categories/',
@@ -99,6 +105,7 @@ export interface FileRoutesByFullPath {
   '/solutions': typeof SolutionsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/': typeof AdminIndexRoute
+  '/admin/brands/': typeof AdminBrandsIndexRoute
   '/admin/categories/': typeof AdminCategoriesIndexRoute
   '/admin/gallery/': typeof AdminGalleryIndexRoute
   '/admin/products/': typeof AdminProductsIndexRoute
@@ -114,6 +121,7 @@ export interface FileRoutesByTo {
   '/solutions': typeof SolutionsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin': typeof AdminIndexRoute
+  '/admin/brands': typeof AdminBrandsIndexRoute
   '/admin/categories': typeof AdminCategoriesIndexRoute
   '/admin/gallery': typeof AdminGalleryIndexRoute
   '/admin/products': typeof AdminProductsIndexRoute
@@ -130,6 +138,7 @@ export interface FileRoutesById {
   '/solutions': typeof SolutionsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/': typeof AdminIndexRoute
+  '/admin/brands/': typeof AdminBrandsIndexRoute
   '/admin/categories/': typeof AdminCategoriesIndexRoute
   '/admin/gallery/': typeof AdminGalleryIndexRoute
   '/admin/products/': typeof AdminProductsIndexRoute
@@ -147,6 +156,7 @@ export interface FileRouteTypes {
     | '/solutions'
     | '/admin/login'
     | '/admin/'
+    | '/admin/brands/'
     | '/admin/categories/'
     | '/admin/gallery/'
     | '/admin/products/'
@@ -162,6 +172,7 @@ export interface FileRouteTypes {
     | '/solutions'
     | '/admin/login'
     | '/admin'
+    | '/admin/brands'
     | '/admin/categories'
     | '/admin/gallery'
     | '/admin/products'
@@ -177,6 +188,7 @@ export interface FileRouteTypes {
     | '/solutions'
     | '/admin/login'
     | '/admin/'
+    | '/admin/brands/'
     | '/admin/categories/'
     | '/admin/gallery/'
     | '/admin/products/'
@@ -193,6 +205,7 @@ export interface RootRouteChildren {
   SolutionsRoute: typeof SolutionsRoute
   AdminLoginRoute: typeof AdminLoginRoute
   AdminIndexRoute: typeof AdminIndexRoute
+  AdminBrandsIndexRoute: typeof AdminBrandsIndexRoute
   AdminCategoriesIndexRoute: typeof AdminCategoriesIndexRoute
   AdminGalleryIndexRoute: typeof AdminGalleryIndexRoute
   AdminProductsIndexRoute: typeof AdminProductsIndexRoute
@@ -264,6 +277,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/brands/': {
+      id: '/admin/brands/'
+      path: '/admin/brands'
+      fullPath: '/admin/brands/'
+      preLoaderRoute: typeof AdminBrandsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/categories/': {
       id: '/admin/categories/'
       path: '/admin/categories'
@@ -305,6 +325,7 @@ const rootRouteChildren: RootRouteChildren = {
   SolutionsRoute: SolutionsRoute,
   AdminLoginRoute: AdminLoginRoute,
   AdminIndexRoute: AdminIndexRoute,
+  AdminBrandsIndexRoute: AdminBrandsIndexRoute,
   AdminCategoriesIndexRoute: AdminCategoriesIndexRoute,
   AdminGalleryIndexRoute: AdminGalleryIndexRoute,
   AdminProductsIndexRoute: AdminProductsIndexRoute,

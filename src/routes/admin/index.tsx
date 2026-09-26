@@ -51,7 +51,7 @@ function AdminDashboard() {
 
   if (checking) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-100">
+      <div className="flex min-h-screen items-center justify-center bg-slate-100">
         <p className="text-slate-600">Checking admin access...</p>
       </div>
     );
@@ -123,7 +123,11 @@ function AdminDashboard() {
           </button>
 
           {/* Brands */}
-          <div className="rounded-2xl bg-white p-6 shadow-sm">
+          <button
+            type="button"
+            onClick={() => navigate({ to: "/admin/brands" })}
+            className="rounded-2xl bg-white p-6 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+          >
             <h3 className="font-semibold text-slate-900">
               Brands
             </h3>
@@ -131,7 +135,7 @@ function AdminDashboard() {
             <p className="mt-2 text-sm text-slate-500">
               Manage brands
             </p>
-          </div>
+          </button>
 
           {/* Gallery */}
           <button

@@ -22,7 +22,12 @@ export function WhatsAppButton() {
     websiteSettings?.whatsapp || site.whatsapp
   ).replace(/\D/g, "");
 
-  const whatsappUrl = `https://wa.me/${whatsappNumber}`;
+  const message =
+    "Hello Krushnai Traders, I would like to know more about your products. Please share the details and price.";
+
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+    message
+  )}`;
 
   return (
     <a

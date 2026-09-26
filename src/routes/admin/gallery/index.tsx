@@ -309,26 +309,37 @@ function AdminGallery() {
         return;
       }
 
-      const url = new URL(item.src);
-      const marker = "/storage/v1/object/public/gallery/";
+      let markerIndex = -1;
+let storagePath = "";
 
-      const markerIndex = url.pathname.indexOf(marker);
+try {
+  const url = new URL(item.src, window.location.origin);
+  const marker = "/storage/v1/object/public/gallery/";
 
-      if (markerIndex !== -1) {
-        const storagePath = decodeURIComponent(
-          url.pathname.substring(
-            markerIndex + marker.length
-          )
-        );
+  markerIndex = url.pathname.indexOf(marker);
 
-        const { error: storageError } = await supabase.storage
-          .from("gallery")
-          .remove([storagePath]);
+  if (markerIndex !== -1) {
+    storagePath = decodeURIComponent(
+      url.pathname.substring(markerIndex + marker.length)
+    );
+  }
+} catch (urlError) {
+  console.warn(
+    "Gallery image URL could not be parsed:",
+    item.src,
+    urlError
+  );
+}
 
-        if (storageError) {
-          throw storageError;
-        }
-      }
+      if (storagePath) {
+  const { error: storageError } = await supabase.storage
+    .from("gallery")
+    .remove([storagePath]);
+
+  if (storageError) {
+    throw storageError;
+  }
+}
 
       const { error: databaseError } = await supabase
         .from("gallery")
