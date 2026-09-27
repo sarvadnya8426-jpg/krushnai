@@ -212,7 +212,7 @@ export function Footer() {
             </li>
 
             <li className="flex gap-3">
-              <Mail className="h-4 w-4 shrink-0 text-accent" />
+              <Mail className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
 
               <a
                 href={`mailto:${email}`}
@@ -229,6 +229,16 @@ export function Footer() {
         <p className="mx-auto max-w-7xl px-4 py-5 text-center text-xs text-primary-foreground/60 sm:px-6">
           © 2026{" "}
           {websiteSettings?.legal_name || site.legalName}. All Rights Reserved.
+          <span className="mx-2">·</span>
+          Developed by{" "}
+<a
+  href="https://www.instagram.com/sarvadnya_dhole/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-primary-foreground/80 transition-colors hover:text-accent hover:underline"
+>
+  Sarvadnya Dhole
+</a>
         </p>
       </div>
     </footer>
