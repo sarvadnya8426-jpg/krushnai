@@ -34,7 +34,8 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: `${site.name} | Plywood, Hardware, Bathroom Accessories & Power Tools`,
+        title:
+          "Krushnai Traders | Plywood, Hardware, Bathroom Accessories & Power Tools",
       },
       {
         name: "description",
@@ -42,8 +43,13 @@ export const Route = createFileRoute("/")({
           "Krushnai Traders is a one-stop showroom for plywood, laminates, furniture hardware, modular kitchen and wardrobe accessories, bathroom accessories, LED mirrors, door hardware and power tools.",
       },
       {
+        property: "og:site_name",
+        content: "Krushnai Traders",
+      },
+      {
         property: "og:title",
-        content: `${site.name} | Everything You Need to Build, Furnish & Finish`,
+        content:
+          "Krushnai Traders | Everything You Need to Build, Furnish & Finish",
       },
       {
         property: "og:description",
@@ -52,11 +58,29 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:url",
-        content: "/",
+        content: "https://www.krushnaitraders.in/",
       },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [
+      {
+        rel: "canonical",
+        href: "https://www.krushnaitraders.in/",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Krushnai Traders",
+          alternateName: "Krushnai Traders",
+          url: "https://www.krushnaitraders.in/",
+        }),
+      },
+    ],
   }),
+
   component: Home,
 });
 
@@ -231,9 +255,7 @@ function Home() {
               <div key={f.title} className="px-2 py-4 md:px-5">
                 <Icon className="h-6 w-6 text-accent" aria-hidden />
 
-                <h3 className="mt-3 text-base">
-                  {f.title}
-                </h3>
+                <h3 className="mt-3 text-base">{f.title}</h3>
 
                 <p className="mt-1.5 text-sm text-muted-foreground">
                   {f.description}
@@ -258,9 +280,7 @@ function Home() {
             />
 
             <div className="absolute -right-3 -bottom-6 hidden rounded-md bg-walnut-gradient px-6 py-5 text-primary-foreground shadow-lift sm:block">
-              <p className="font-display text-2xl text-accent">
-                One Roof
-              </p>
+              <p className="font-display text-2xl text-accent">One Roof</p>
 
               <p className="text-xs tracking-[0.16em] uppercase">
                 Complete Solutions
@@ -286,10 +306,10 @@ function Home() {
 
               <p>
                 From plywood and laminates to kitchen and wardrobe
-                accessories, bathroom fittings, LED mirrors, door
-                hardware and professional power tools — everything a
-                project needs is available in one convenient destination,
-                with guidance on choosing the right product for the job.
+                accessories, bathroom fittings, LED mirrors, door hardware
+                and professional power tools — everything a project needs is
+                available in one convenient destination, with guidance on
+                choosing the right product for the job.
               </p>
             </div>
 
@@ -329,10 +349,7 @@ function Home() {
               </p>
             ) : categories.length > 0 ? (
               categories.map((c) => (
-                <CategoryCard
-                  key={c.slug}
-                  category={c}
-                />
+                <CategoryCard key={c.slug} category={c} />
               ))
             ) : (
               <p className="col-span-full text-center text-muted-foreground">
@@ -343,9 +360,7 @@ function Home() {
 
           <div className="mt-10 text-center">
             <Button size="lg" variant="outline" asChild>
-              <Link to="/products">
-                View Full Catalogue
-              </Link>
+              <Link to="/products">View Full Catalogue</Link>
             </Button>
           </div>
         </div>
@@ -376,9 +391,7 @@ function Home() {
                 />
 
                 <div className="bg-hero-overlay absolute inset-0 flex flex-col justify-end p-5 text-primary-foreground">
-                  <h3 className="text-lg">
-                    {s.title}
-                  </h3>
+                  <h3 className="text-lg">{s.title}</h3>
 
                   <p className="mt-1 text-xs text-primary-foreground/80">
                     {s.description}
@@ -495,15 +508,12 @@ function Home() {
           </h2>
 
           <p className="mt-4 text-primary-foreground/80">
-            Tell us what you need and our team will help you find the
-            right materials and products.
+            Tell us what you need and our team will help you find the right
+            materials and products.
           </p>
 
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <Button
-              size="lg"
-              onClick={() => openQuote()}
-            >
+            <Button size="lg" onClick={() => openQuote()}>
               Get a Quote
             </Button>
 
