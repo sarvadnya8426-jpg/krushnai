@@ -9,7 +9,6 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { site } from "@/config/site";
-import { Logo } from "./Logo";
 import { useEffect, useState } from "react";
 import {
   getWebsiteSettings,
@@ -57,7 +56,12 @@ export function Footer() {
     websiteSettings?.whatsapp || site.whatsapp
   ).replace(/\D/g, "");
 
-  const whatsappUrl = `https://wa.me/${whatsappNumber}`;
+  const whatsappMessage =
+    "Hello, I am interested in your products. Please share the price and availability.";
+
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+    whatsappMessage
+  )}`;
 
   const email =
     websiteSettings?.email || site.email;
@@ -91,9 +95,16 @@ export function Footer() {
   return (
     <footer className="bg-walnut-deep text-primary-foreground">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4">
+
+        {/* Business Information */}
         <div>
           <div className="flex items-center gap-3">
-            <Logo className="h-11 w-11" />
+            {/* Same logo used in splash screen */}
+            <img
+              src="/images/krushnai-logo-transparent.png"
+              alt="Krushnai Traders"
+              className="h-14 w-14 object-contain"
+            />
 
             <span className="font-display text-xl font-semibold">
               {businessName}
@@ -128,6 +139,7 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Quick Links */}
         <div>
           <h3 className="text-sm tracking-[0.2em] text-accent uppercase">
             Quick Links
@@ -147,6 +159,7 @@ export function Footer() {
           </ul>
         </div>
 
+        {/* Product Categories */}
         <div>
           <h3 className="text-sm tracking-[0.2em] text-accent uppercase">
             Product Categories
@@ -166,12 +179,14 @@ export function Footer() {
           </ul>
         </div>
 
+        {/* Contact */}
         <div>
           <h3 className="text-sm tracking-[0.2em] text-accent uppercase">
             Contact
           </h3>
 
           <ul className="mt-4 space-y-3 text-sm text-primary-foreground/75">
+
             <li className="flex gap-3">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
 
@@ -221,24 +236,28 @@ export function Footer() {
                 {email}
               </a>
             </li>
+
           </ul>
         </div>
       </div>
 
+      {/* Bottom Copyright */}
       <div className="border-t border-primary-foreground/10">
         <p className="mx-auto max-w-7xl px-4 py-5 text-center text-xs text-primary-foreground/60 sm:px-6">
           © 2026{" "}
           {websiteSettings?.legal_name || site.legalName}. All Rights Reserved.
+
           <span className="mx-2">·</span>
+
           Developed by{" "}
-<a
-  href="https://www.instagram.com/sarvadnya_dhole/"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="text-primary-foreground/80 transition-colors hover:text-accent hover:underline"
->
-  Sarvadnya Dhole
-</a>
+          <a
+            href="https://www.instagram.com/sarvadnya_dhole/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary-foreground/80 transition-colors hover:text-accent hover:underline"
+          >
+            Sarvadnya Dhole
+          </a>
         </p>
       </div>
     </footer>

@@ -152,10 +152,7 @@ function AboutPage() {
             ))}
           </dl>
 
-          <p className="mt-6 text-center text-xs text-muted-foreground">
-            Figures shown are indicative placeholders and can be updated by
-            the business owner.
-          </p>
+          
         </div>
       </section>
 
