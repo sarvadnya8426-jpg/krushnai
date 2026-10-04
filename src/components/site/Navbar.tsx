@@ -65,13 +65,14 @@ export function Navbar() {
           : "border-transparent bg-background"
       }`}
     >
-      <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:px-6 lg:py-4">
+      <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-2.5 sm:gap-4 sm:px-6 sm:py-3 lg:py-4">
         <Link
           to="/"
-          className="flex min-w-0 items-center gap-3"
+          className="flex min-w-0 items-center gap-2 sm:gap-3"
           onClick={() => setOpen(false)}
         >
-          <Logo className="h-20 w-20 shrink-0" />
+          {/* Smaller on mobile, original size on desktop */}
+          <Logo className="h-16 w-16 shrink-0 lg:h-20 lg:w-20" />
 
           <span className="min-w-0">
             <span className="block truncate font-display text-lg leading-tight font-semibold sm:text-xl">

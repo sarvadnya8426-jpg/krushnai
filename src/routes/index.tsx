@@ -137,65 +137,6 @@ function Home() {
     useState<WebsiteSettings | null>(null);
 
   /*
-   * SCROLL REVEAL ANIMATION
-   *
-   * Uses the browser's native IntersectionObserver.
-   * No animation library is required.
-   */
-  useEffect(() => {
-    const elements = document.querySelectorAll<HTMLElement>(
-      ".scroll-reveal",
-    );
-
-    if (!elements.length) return;
-
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-
-    if (prefersReducedMotion) {
-      elements.forEach((element) => {
-        element.classList.add("scroll-reveal-visible");
-      });
-
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("scroll-reveal-visible");
-
-            /*
-             * Animate only once.
-             * This prevents unnecessary work while scrolling back and forth.
-             */
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.12,
-        rootMargin: "0px 0px -60px 0px",
-      },
-    );
-
-    elements.forEach((element) => observer.observe(element));
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [
-    categoriesLoading,
-    brandsLoading,
-    projectsLoading,
-    categories.length,
-    brands.length,
-    projects.length,
-  ]);
-
-  /*
    * LOAD CATEGORIES
    */
   useEffect(() => {
@@ -305,55 +246,6 @@ function Home() {
 
   return (
     <>
-      {/*
-       * SCROLL ANIMATION STYLES
-       *
-       * Lightweight CSS only.
-       */}
-      <style>{`
-        .scroll-reveal {
-          opacity: 0;
-          transform: translateY(32px);
-          transition:
-            opacity 0.5s ease-out,
-            transform 0.5s ease-out;
-          will-change: opacity, transform;
-        }
-
-        .scroll-reveal-visible {
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        .scroll-reveal-delay-1 {
-          transition-delay: 0.08s;
-        }
-
-        .scroll-reveal-delay-2 {
-          transition-delay: 0.16s;
-        }
-
-        .scroll-reveal-delay-3 {
-          transition-delay: 0.24s;
-        }
-
-        .scroll-reveal-delay-4 {
-          transition-delay: 0.32s;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .scroll-reveal,
-          .scroll-reveal-delay-1,
-          .scroll-reveal-delay-2,
-          .scroll-reveal-delay-3,
-          .scroll-reveal-delay-4 {
-            opacity: 1;
-            transform: none;
-            transition: none;
-          }
-        }
-      `}</style>
-
       {/* HERO */}
       <section className="relative isolate">
         <img
@@ -370,7 +262,7 @@ function Home() {
         />
 
         <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:py-36">
-          <div className="fade-up max-w-2xl text-primary-foreground">
+          <div className="max-w-2xl text-primary-foreground">
             <p className="eyebrow">
               {websiteSettings?.subtagline ||
                 "From Plywood to Hardware. From Bathrooms to Power Tools."}
@@ -409,18 +301,13 @@ function Home() {
       </section>
 
       {/* TRUST */}
-      <section className="scroll-reveal border-b border-border bg-secondary">
+      <section className="border-b border-border bg-secondary">
         <div className="mx-auto grid max-w-7xl gap-px overflow-hidden px-4 py-12 sm:px-6 md:grid-cols-3 lg:grid-cols-5">
           {trustFeatures.map((f, i) => {
             const Icon = trustIcons[i] ?? BadgeCheck;
 
             return (
-              <div
-                key={f.title}
-                className={`scroll-reveal scroll-reveal-delay-${
-                  Math.min(i + 1, 4)
-                } px-2 py-4 md:px-5`}
-              >
+              <div key={f.title} className="px-2 py-4 md:px-5">
                 <Icon className="h-6 w-6 text-accent" aria-hidden />
 
                 <h3 className="mt-3 text-base">{f.title}</h3>
@@ -435,9 +322,9 @@ function Home() {
       </section>
 
       {/* ABOUT */}
-      <section className="scroll-reveal mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-28">
+      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-28">
         <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div className="scroll-reveal relative">
+          <div className="relative">
             <img
               src={showroom}
               alt="Inside the Krushnai Traders showroom"
@@ -448,7 +335,9 @@ function Home() {
             />
 
             <div className="absolute -right-3 -bottom-6 hidden rounded-md bg-walnut-gradient px-6 py-5 text-primary-foreground shadow-lift sm:block">
-              <p className="font-display text-2xl text-accent">One Roof</p>
+              <p className="font-display text-2xl text-accent">
+                One Roof
+              </p>
 
               <p className="text-xs tracking-[0.16em] uppercase">
                 Complete Solutions
@@ -456,7 +345,7 @@ function Home() {
             </div>
           </div>
 
-          <div className="scroll-reveal scroll-reveal-delay-2">
+          <div>
             <SectionHeading
               align="left"
               eyebrow="About Us"
@@ -501,7 +390,7 @@ function Home() {
       {/* CATEGORIES */}
       <section
         id="categories"
-        className="scroll-reveal bg-secondary/60 py-20 lg:py-28"
+        className="bg-secondary/60 py-20 lg:py-28"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <SectionHeading
@@ -516,14 +405,8 @@ function Home() {
                 Loading categories...
               </p>
             ) : categories.length > 0 ? (
-              categories.map((c, index) => (
-                <div
-                  key={c.slug}
-                  className={`scroll-reveal scroll-reveal-delay-${Math.min(
-                    (index % 4) + 1,
-                    4,
-                  )}`}
-                >
+              categories.map((c) => (
+                <div key={c.slug}>
                   <CategoryCard category={c} />
                 </div>
               ))
@@ -534,7 +417,7 @@ function Home() {
             )}
           </div>
 
-          <div className="scroll-reveal mt-10 text-center">
+          <div className="mt-10 text-center">
             <Button size="lg" variant="outline" asChild>
               <Link to="/products">View Full Catalogue</Link>
             </Button>
@@ -543,7 +426,7 @@ function Home() {
       </section>
 
       {/* SOLUTIONS */}
-      <section className="scroll-reveal bg-secondary/60 py-20 lg:py-28">
+      <section className="bg-secondary/60 py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <SectionHeading
             eyebrow="Solutions"
@@ -552,13 +435,10 @@ function Home() {
           />
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {solutions.slice(0, 8).map((s, index) => (
+            {solutions.slice(0, 8).map((s) => (
               <article
                 key={s.title}
-                className={`scroll-reveal scroll-reveal-delay-${Math.min(
-                  (index % 4) + 1,
-                  4,
-                )} group relative h-56 overflow-hidden rounded-md shadow-soft`}
+                className="group relative h-56 overflow-hidden rounded-md shadow-soft"
               >
                 <img
                   src={s.image}
@@ -580,7 +460,7 @@ function Home() {
             ))}
           </div>
 
-          <div className="scroll-reveal mt-10 text-center">
+          <div className="mt-10 text-center">
             <Button variant="outline" size="lg" asChild>
               <Link to="/solutions">
                 See All Solutions
@@ -592,7 +472,7 @@ function Home() {
       </section>
 
       {/* PROJECTS */}
-      <section className="scroll-reveal py-20 lg:py-24">
+      <section className="py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <SectionHeading
             eyebrow="Our Projects"
@@ -605,7 +485,7 @@ function Home() {
               {[1, 2].map((item) => (
                 <div
                   key={item}
-                  className="scroll-reveal mx-auto w-full max-w-md overflow-hidden rounded-2xl border bg-card shadow-sm"
+                  className="mx-auto w-full max-w-md overflow-hidden rounded-2xl border bg-card shadow-sm"
                 >
                   <div className="aspect-[9/16] animate-pulse bg-muted" />
 
@@ -619,12 +499,10 @@ function Home() {
           ) : projects.length > 0 ? (
             <>
               <div className="mt-12 grid gap-8 md:grid-cols-2">
-                {projects.map((project, index) => (
+                {projects.map((project) => (
                   <article
                     key={project.id}
-                    className={`scroll-reveal scroll-reveal-delay-${
-                      index + 1
-                    } mx-auto w-full max-w-md overflow-hidden rounded-2xl border bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-lg`}
+                    className="mx-auto w-full max-w-md overflow-hidden rounded-2xl border bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
                   >
                     <div className="bg-muted">
                       <div className="aspect-[9/16] w-full">
@@ -676,7 +554,7 @@ function Home() {
                 ))}
               </div>
 
-              <div className="scroll-reveal mt-10 text-center">
+              <div className="mt-10 text-center">
                 <Button size="lg" variant="outline" asChild>
                   <Link to="/projects">
                     View All Projects
@@ -686,7 +564,7 @@ function Home() {
               </div>
             </>
           ) : (
-            <div className="scroll-reveal mt-12 rounded-2xl border border-dashed p-10 text-center">
+            <div className="mt-12 rounded-2xl border border-dashed p-10 text-center">
               <Instagram className="mx-auto h-9 w-9 text-muted-foreground" />
 
               <h3 className="mt-4 text-lg font-semibold">
@@ -711,7 +589,7 @@ function Home() {
       </section>
 
       {/* BRANDS */}
-      <section className="scroll-reveal bg-secondary/40 py-16 lg:py-20">
+      <section className="bg-secondary/40 py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <SectionHeading
             eyebrow="Our Brands"
@@ -725,22 +603,16 @@ function Home() {
                 {Array.from({ length: 6 }).map((_, index) => (
                   <div
                     key={index}
-                    className={`scroll-reveal scroll-reveal-delay-${Math.min(
-                      (index % 4) + 1,
-                      4,
-                    )} h-28 animate-pulse rounded-lg border border-border bg-white`}
+                    className="h-28 animate-pulse rounded-lg border border-border bg-white"
                   />
                 ))}
               </div>
             ) : brands.length > 0 ? (
               <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-                {brands.map((brand, index) => (
+                {brands.map((brand) => (
                   <div
                     key={brand.id}
-                    className={`scroll-reveal scroll-reveal-delay-${Math.min(
-                      (index % 4) + 1,
-                      4,
-                    )} flex h-28 items-center justify-center rounded-lg border border-border bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}
+                    className="flex h-28 items-center justify-center rounded-lg border border-border bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                   >
                     {brand.logo ? (
                       <img
@@ -767,7 +639,7 @@ function Home() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="scroll-reveal py-20 lg:py-28">
+      <section className="py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <SectionHeading
             eyebrow="Customer Reviews"
@@ -778,10 +650,7 @@ function Home() {
             {testimonials.map((t, index) => (
               <figure
                 key={index}
-                className={`scroll-reveal scroll-reveal-delay-${Math.min(
-                  index + 1,
-                  4,
-                )} rounded-md border border-border bg-card p-7 shadow-soft`}
+                className="rounded-md border border-border bg-card p-7 shadow-soft"
               >
                 <span
                   className="font-display text-5xl leading-none text-accent"
@@ -808,7 +677,7 @@ function Home() {
       </section>
 
       {/* CTA */}
-      <section className="scroll-reveal bg-walnut-gradient py-20 text-primary-foreground lg:py-24">
+      <section className="bg-walnut-gradient py-20 text-primary-foreground lg:py-24">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
           <h2 className="text-3xl text-balance sm:text-4xl">
             Planning Your Next Project?
@@ -843,7 +712,7 @@ function Home() {
       </section>
 
       {/* MAP */}
-      <section className="scroll-reveal py-20 lg:py-28">
+      <section className="py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <SectionHeading
             eyebrow="Visit Us"
@@ -851,7 +720,7 @@ function Home() {
             subtitle="Visit our showroom and explore our complete range of products."
           />
 
-          <div className="scroll-reveal mt-10 overflow-hidden rounded-md border border-border shadow-soft">
+          <div className="mt-10 overflow-hidden rounded-md border border-border shadow-soft">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3127.5180685025857!2d75.41141907427911!3d20.085315819514655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdbbf0051053899%3A0x6c192573a4a1b322!2sKrushnai%20Traders!5e1!3m2!1sen!2sin!4v1789549565739!5m2!1sen!2sin"
               width="100%"
