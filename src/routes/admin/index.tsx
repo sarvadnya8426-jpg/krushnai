@@ -152,6 +152,21 @@ function AdminDashboard() {
             </p>
           </button>
 
+          {/* Projects */}
+          <button
+            type="button"
+            onClick={() => navigate({ to: "/admin/projects" })}
+            className="rounded-2xl bg-white p-6 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+          >
+            <h3 className="font-semibold text-slate-900">
+              Projects
+            </h3>
+
+            <p className="mt-2 text-sm text-slate-500">
+              Manage Instagram Reels & completed projects
+            </p>
+          </button>
+
           {/* Website Settings */}
           <button
             type="button"

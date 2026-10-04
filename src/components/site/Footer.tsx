@@ -20,6 +20,7 @@ const quickLinks = [
   { to: "/about", label: "About" },
   { to: "/products", label: "Products" },
   { to: "/solutions", label: "Solutions" },
+  { to: "/projects", label: "Projects" },
   { to: "/gallery", label: "Gallery" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -242,24 +243,28 @@ export function Footer() {
       </div>
 
       {/* Bottom Copyright */}
-      <div className="border-t border-primary-foreground/10">
-        <p className="mx-auto max-w-7xl px-4 py-5 text-center text-xs text-primary-foreground/60 sm:px-6">
-          © 2026{" "}
-          {websiteSettings?.legal_name || site.legalName}. All Rights Reserved.
+<div className="border-t border-primary-foreground/10">
+  <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-2 px-4 py-5 text-center text-xs text-primary-foreground/60 sm:flex-row sm:gap-0 sm:px-6">
+    <span>
+      © 2026{" "}
+      {websiteSettings?.legal_name || site.legalName}. All Rights Reserved.
+    </span>
 
-          <span className="mx-2">·</span>
+    <span className="hidden mx-2 sm:inline">·</span>
 
-          Developed by{" "}
-          <a
-            href="https://www.instagram.com/sarvadnya_dhole/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary-foreground/80 transition-colors hover:text-accent hover:underline"
-          >
-            Sarvadnya Dhole
-          </a>
-        </p>
-      </div>
+    <span>
+      Developed by{" "}
+      <a
+        href="https://www.instagram.com/sarvadnya_dhole/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-primary-foreground/80 transition-colors hover:text-accent hover:underline"
+      >
+        Sarvadnya Dhole
+      </a>
+    </span>
+  </div>
+</div>
     </footer>
   );
 }

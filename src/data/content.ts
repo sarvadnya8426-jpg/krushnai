@@ -9,6 +9,7 @@ import solutionWorkshop from "@/assets/solution/workshop.png";
 
 // Temporary independent solution image references.
 // These do NOT depend on category images.
+
 const solutionBathroom = solutionKitchen;
 const solutionInterior = solutionWorkshop;
 
@@ -56,118 +57,8 @@ export const solutions = [
   },
 ];
 
-/** Placeholder brand list — kept for compatibility with existing code. */
-export const brandList = [
-  "Brand Name 1",
-  "Brand Name 2",
-  "Brand Name 3",
-  "Brand Name 4",
-  "Brand Name 5",
-  "Brand Name 6",
-  "Brand Name 7",
-  "Brand Name 8",
-];
-
-export type GalleryItem = {
-  src: string;
-  alt: string;
-  filter: string;
-};
-
-export const gallery: GalleryItem[] = [
-  {
-    src: showroom,
-    alt: "Krushnai Traders showroom interior",
-    filter: "Showroom",
-  },
-  {
-    src: "/images/gallery/mainshop.jpeg",
-    alt: "Krushnai Traders main shop",
-    filter: "Showroom",
-  },
-  {
-    src: "/images/gallery/IMG20250405174643.jpeg",
-    alt: "Mortise handle",
-    filter: "Furniture",
-  },
-  {
-    src: "/images/gallery/IMG20250405174634.jpeg",
-    alt: "Mortise handle",
-    filter: "Furniture",
-  },
-  {
-    src: "/images/gallery/handle.jpeg",
-    alt: "Handle",
-    filter: "Furniture",
-  },
-  {
-    src: "/images/gallery/IMG20250405174737.jpeg",
-    alt: "Handle",
-    filter: "Showroom",
-  },
-  {
-    src: "/images/gallery/20250419_161317-COLLAGE.jpeg",
-    alt: "Premium Hanger",
-    filter: "Furniture",
-  },
-  {
-    src: "/images/gallery/IMG20250405174751.jpeg",
-    alt: "Handle",
-    filter: "Showroom",
-  },
-  {
-    src: "/images/gallery/cordlessdrill.jpeg",
-    alt: "Cordless drill",
-    filter: "Tools",
-  },
-  {
-    src: "/images/gallery/IMG20250428165110.jpeg",
-    alt: "Cordless Grinder",
-    filter: "Tools",
-  },
-  {
-    src: "/images/gallery/IMG20250515121205.jpeg",
-    alt: "Cordless Hammer",
-    filter: "Tools",
-  },
-  {
-    src: "/images/gallery/IMG20251126120613.jpeg",
-    alt: "Hardware",
-    filter: "Showroom",
-  },
-  {
-    src: "/images/gallery/IMG20251126120822.jpeg",
-    alt: "Bathroom Accessories Display",
-    filter: "Showroom",
-  },
-  {
-    src: "/images/gallery/IMG20250428170937.jpeg",
-    alt: "Soap Dish",
-    filter: "Showroom",
-  },
-  {
-    src: "/images/gallery/IMG20250805180019.jpeg",
-    alt: "Door Knocker",
-    filter: "Doors",
-  },
-  {
-    src: "/images/gallery/IMG20250405174826.jpeg",
-    alt: "Krushnai Traders",
-    filter: "Showroom",
-  },
-];
-
-export const galleryFilters = [
-  "All",
-  "Showroom",
-  "Furniture",
-  "Kitchens",
-  "Bathrooms",
-  "Doors",
-  "Tools",
-];
-
 /** Placeholder reviews — replace with genuine customer feedback. */
+
 export const testimonials = [
   {
     quote:

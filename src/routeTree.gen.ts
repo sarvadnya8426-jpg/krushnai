@@ -15,6 +15,7 @@ import { Route as BrandsRouteImport } from './routes/brands'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ProductsRouteImport } from './routes/products'
+import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
@@ -22,6 +23,7 @@ import { Route as AdminBrandsIndexRouteImport } from './routes/admin/brands/inde
 import { Route as AdminCategoriesIndexRouteImport } from './routes/admin/categories/index'
 import { Route as AdminGalleryIndexRouteImport } from './routes/admin/gallery/index'
 import { Route as AdminProductsIndexRouteImport } from './routes/admin/products/index'
+import { Route as AdminProjectsIndexRouteImport } from './routes/admin/projects/index'
 import { Route as AdminSettingsIndexRouteImport } from './routes/admin/settings/index'
 
 const IndexRoute = IndexRouteImport.update({
@@ -52,6 +54,11 @@ const GalleryRoute = GalleryRouteImport.update({
 const ProductsRoute = ProductsRouteImport.update({
   id: '/products',
   path: '/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SolutionsRoute = SolutionsRouteImport.update({
@@ -89,6 +96,11 @@ const AdminProductsIndexRoute = AdminProductsIndexRouteImport.update({
   path: '/admin/products/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminProjectsIndexRoute = AdminProjectsIndexRouteImport.update({
+  id: '/admin/projects/',
+  path: '/admin/projects/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminSettingsIndexRoute = AdminSettingsIndexRouteImport.update({
   id: '/admin/settings/',
   path: '/admin/settings/',
@@ -102,6 +114,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/products': typeof ProductsRoute
+  '/projects': typeof ProjectsRoute
   '/solutions': typeof SolutionsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/': typeof AdminIndexRoute
@@ -109,6 +122,7 @@ export interface FileRoutesByFullPath {
   '/admin/categories/': typeof AdminCategoriesIndexRoute
   '/admin/gallery/': typeof AdminGalleryIndexRoute
   '/admin/products/': typeof AdminProductsIndexRoute
+  '/admin/projects/': typeof AdminProjectsIndexRoute
   '/admin/settings/': typeof AdminSettingsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -118,6 +132,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/products': typeof ProductsRoute
+  '/projects': typeof ProjectsRoute
   '/solutions': typeof SolutionsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin': typeof AdminIndexRoute
@@ -125,6 +140,7 @@ export interface FileRoutesByTo {
   '/admin/categories': typeof AdminCategoriesIndexRoute
   '/admin/gallery': typeof AdminGalleryIndexRoute
   '/admin/products': typeof AdminProductsIndexRoute
+  '/admin/projects': typeof AdminProjectsIndexRoute
   '/admin/settings': typeof AdminSettingsIndexRoute
 }
 export interface FileRoutesById {
@@ -135,6 +151,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/products': typeof ProductsRoute
+  '/projects': typeof ProjectsRoute
   '/solutions': typeof SolutionsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/': typeof AdminIndexRoute
@@ -142,6 +159,7 @@ export interface FileRoutesById {
   '/admin/categories/': typeof AdminCategoriesIndexRoute
   '/admin/gallery/': typeof AdminGalleryIndexRoute
   '/admin/products/': typeof AdminProductsIndexRoute
+  '/admin/projects/': typeof AdminProjectsIndexRoute
   '/admin/settings/': typeof AdminSettingsIndexRoute
 }
 export interface FileRouteTypes {
@@ -153,6 +171,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/gallery'
     | '/products'
+    | '/projects'
     | '/solutions'
     | '/admin/login'
     | '/admin/'
@@ -160,6 +179,7 @@ export interface FileRouteTypes {
     | '/admin/categories/'
     | '/admin/gallery/'
     | '/admin/products/'
+    | '/admin/projects/'
     | '/admin/settings/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -169,6 +189,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/gallery'
     | '/products'
+    | '/projects'
     | '/solutions'
     | '/admin/login'
     | '/admin'
@@ -176,6 +197,7 @@ export interface FileRouteTypes {
     | '/admin/categories'
     | '/admin/gallery'
     | '/admin/products'
+    | '/admin/projects'
     | '/admin/settings'
   id:
     | '__root__'
@@ -185,6 +207,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/gallery'
     | '/products'
+    | '/projects'
     | '/solutions'
     | '/admin/login'
     | '/admin/'
@@ -192,6 +215,7 @@ export interface FileRouteTypes {
     | '/admin/categories/'
     | '/admin/gallery/'
     | '/admin/products/'
+    | '/admin/projects/'
     | '/admin/settings/'
   fileRoutesById: FileRoutesById
 }
@@ -202,6 +226,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   GalleryRoute: typeof GalleryRoute
   ProductsRoute: typeof ProductsRoute
+  ProjectsRoute: typeof ProjectsRoute
   SolutionsRoute: typeof SolutionsRoute
   AdminLoginRoute: typeof AdminLoginRoute
   AdminIndexRoute: typeof AdminIndexRoute
@@ -209,6 +234,7 @@ export interface RootRouteChildren {
   AdminCategoriesIndexRoute: typeof AdminCategoriesIndexRoute
   AdminGalleryIndexRoute: typeof AdminGalleryIndexRoute
   AdminProductsIndexRoute: typeof AdminProductsIndexRoute
+  AdminProjectsIndexRoute: typeof AdminProjectsIndexRoute
   AdminSettingsIndexRoute: typeof AdminSettingsIndexRoute
 }
 
@@ -254,6 +280,13 @@ declare module '@tanstack/react-router' {
       path: '/products'
       fullPath: '/products'
       preLoaderRoute: typeof ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/solutions': {
@@ -305,6 +338,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminProductsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/projects/': {
+      id: '/admin/projects/'
+      path: '/admin/projects'
+      fullPath: '/admin/projects/'
+      preLoaderRoute: typeof AdminProjectsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/settings/': {
       id: '/admin/settings/'
       path: '/admin/settings'
@@ -322,6 +362,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   GalleryRoute: GalleryRoute,
   ProductsRoute: ProductsRoute,
+  ProjectsRoute: ProjectsRoute,
   SolutionsRoute: SolutionsRoute,
   AdminLoginRoute: AdminLoginRoute,
   AdminIndexRoute: AdminIndexRoute,
@@ -329,6 +370,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminCategoriesIndexRoute: AdminCategoriesIndexRoute,
   AdminGalleryIndexRoute: AdminGalleryIndexRoute,
   AdminProductsIndexRoute: AdminProductsIndexRoute,
+  AdminProjectsIndexRoute: AdminProjectsIndexRoute,
   AdminSettingsIndexRoute: AdminSettingsIndexRoute,
 }
 export const routeTree = rootRouteImport
